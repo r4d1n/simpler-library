@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Media Library</title>
+  </head>
+  <body>
+    <form id="book-form">
+      <label for="book-name">Name</label>
+      <input id="book-name" name="book[name]">
+
+      <br>
+      <label for="book-description">Description</label>
+      <textarea id="book-description" name="book[description]"></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <h3>Your Library</h3>
+    <ul id="library"></ul>
+
+    <script src="./javascripts/jquery.js"></script>
+    <script src="./javascripts/application.js"></script>
+  </body>
+</html>
