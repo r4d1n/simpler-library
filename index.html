@@ -5,12 +5,52 @@
   </head>
   <body>
     <form id="book-form">
-      <label for="book-name">Name</label>
-      <input id="book-name" name="book[name]">
+      <label for="book-title">Title</label>
+      <input id="book-title" name="book[title]">
+	<br>
+	
+	<label for="book-photographer">Photographer</label>
+	<input id="book-photographer" name="book[photographer]">
+	<br>
+	
+	<label for="book-nationality">Photographer's Nationality</label>
+	<input id="book-nationality" name="book[nationality]">
+	<br>
 
-      <br>
-      <label for="book-description">Description</label>
-      <textarea id="book-description" name="book[description]"></textarea>
+	<label for="book-type">Type</label>
+	<input id="book-type" name="book[type]">
+	<br>
+	
+	<label for="book-genre">Genre</label>
+	<input id="book-genre" name="book[genre]">
+	<br>
+
+	<label for ="book-textby">Text By</label>
+	<input id="book-textby" name="book[textby]">
+	<br>
+
+	<label for="book-publisher">Publisher</label>
+	<input id="book-publisher" name="book[publisher]">
+	<br>
+
+	<label for="book-isbn">ISBN</label>
+	<input id="book-isbn" name="book[isbn]">
+	<br>
+	
+	<label for="book-year">Year Published</label>
+	<input id="book-year" name="book[year]">
+	<br>
+	
+	<label for="book-tags">Tags</label>
+	<input id="book-tags" name="book[tags]">
+	<br>
+	
+	<label for="book-comments">Comments</label>
+	<input id="book-comments" name="book[comments]">
+	<br> <!--For some reason when this was a textarea it rendered the following input as HTML inside the text area, but changing it to an input fixed the problem. -->
+	
+	<label for="book-signed">Signed</label>
+	<input type=checkbox id="book-signed" name="book[signed]">
 
       <button type="submit">Submit</button>
     </form>
@@ -18,7 +58,7 @@
     <h3>Your Library</h3>
     <ul id="library"></ul>
 
-    <script src="./javascripts/jquery.js"></script>
-    <script src="./javascripts/application.js"></script>
+  <script src="./javascripts/jquery.js"></script>
+  <script src="./javascripts/application.js"></script> 
   </body>
 </html>
