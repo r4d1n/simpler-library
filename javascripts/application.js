@@ -1,5 +1,5 @@
 var books = [
-{ 	"Protest Photographs" : { 
+{ 	title: "Protest Photographs", 
 	photographer : "Chauncey Hare",
 	nationality : "American",
 	type : "Monograph", 
@@ -10,11 +10,10 @@ var books = [
 	year : "2009",
 	tags : "B&W, domesticity, interiors, home, family, political, California, labor, Suburbs",
 	comments : "",
-	signed : false
-	}
+	signed : false	
 },
 
-{ 	"Incidents" : { 
+{ 	title : "Incidents",
 	photographer : "Henry Wessel",
 	nationality : "American",
 	type : "Monograph", 
@@ -26,10 +25,9 @@ var books = [
 	tags : "B&W, California, Bay Area, American West",
 	comments : "Has a sense of humor",
 	signed : true
-	}
 },
 
-{ 	"Secondhand" : { 
+{ 	title: "Secondhand",
 	photographer : "",
 	nationality : "",
 	type : "Exhibition Catalog", 
@@ -41,8 +39,7 @@ var books = [
 	tags : "archives, appropriation, institutions, Bay Area, curation",
 	comments : "What an interesting show.",
 	signed : false
-	}
-}
+},
 ];
 
 $(document).ready(function() {
@@ -51,26 +48,59 @@ $(document).ready(function() {
 
 $("#book-form").submit(function(event) {
   event.preventDefault();
-  saveBook($("#book-form input").val());
+  saveBook(
+	$("#book-title").val(), 
+	$("#book-photographer").val(), 
+	$("#book-nationality").val(),
+	$("#book-type").val(),
+	$("#book-genre").val(),
+	$("#book-textby").val(),
+	$("#book-publisher").val(),
+	$("#book-isbn").val(),
+	$("#book-year").val(),
+	$("#book-tags").val(),
+	$("#book-comments").val(),
+	$("#book-signed").val()
+	);
   refreshList();
   
   $("#book-title").val("");
+  $("#book-photographer").val("");
   $("#book-nationality").val("");
+  $("#book-type").val("");
+  $("#book-genre").val("");
+  $("#book-textby").val("");
+  $("#book-publisher").val("");
+  $("#book-isbn").val("");
+  $("#book-year").val("");
+  $("#book-tags").val("");
+  $("#book-comments").val("");
+  $("#book-signed").val("");
 });
 
-function showBook(title, description) {
-  $("#library").prepend(
+function showBook(title, photographer, nationality, type, genre, textby, publisher, isbn, year, tags, comments, signed) {
+ $("#library").prepend(
     $("<li/>")
       .append(
-        $("<h3/>").text(title),
-        $("<p/>").text(description),
+	$("<h3/>").text(title),
+	$("<p/>").text(nationality),
+	$("<p/>").text(type),
+	$("<p/>").text(genre),
+	$("<p/>").text(textby),
+	$("<p/>").text(publisher),
+	$("<p/>").text(isbn),
+	$("<p/>").text(year),
+	$("<p/>").text(tags),
+	$("<p/>").text(comments),
+	$("<p/>").text(signed),
 	$("<a/>").text("Remove").click(function () {
-		removeByName(title);
-		refreshList();
-})
-      )
-  );
+	removeByName(title);
+	refreshList();
+     })
+   )
+)
 };
+
 
 function refreshList () {
  $('#library').html("");
@@ -84,8 +114,8 @@ function refreshList () {
 
 
 function saveBook(title, photographer, nationality, type, genre, textby, publisher, isbn, year, tags, comments, signed) {
- var newBook = {};
- newBook[title] = {
+ var newBook = {
+ "title" : title,
  "photographer" : photographer,
  "nationality" : nationality,
  "type" : type,
@@ -97,13 +127,12 @@ function saveBook(title, photographer, nationality, type, genre, textby, publish
  "tags" : tags,
  "comments" : comments
 };
-
-/* if (document.getElementsByTagName('signed') === 'checked') {
- newBook.title.signed = true;
+/*
+if (document.getElementsByTagName('signed') == 'checked') {
+ newBook.signed = true;
 } else {
- newBook.title.signed = false;
+ newBook.signed = false;
 };
-
 */
  books.push(newBook);
 };
@@ -112,13 +141,12 @@ function saveBook(title, photographer, nationality, type, genre, textby, publish
 function getIndex(title) {
  for (var i=0; i<books.length; ++i) {
 	var object = books[i];
-	for (var t in object) {
-	if (t === title) {
-	return i;
-	};
- };
+	if (object.title = title) {
+		return i;
+	}
+    }
 };
-};
+
 
 function removeBook(k) {
  books.splice(k,1);
