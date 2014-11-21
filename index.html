@@ -6,51 +6,51 @@
   <body>
     <form id="book-form">
       <label for="book-title">Title</label>
-      <input id="book-title" name="book[title]">
+      <input class="book-field" id="book-title" name="book[title]">
 	<br>
 	
 	<label for="book-photographer">Photographer</label>
-	<input id="book-photographer" name="book[photographer]">
+	<input class="book-field" id="book-photographer" name="book[photographer]">
 	<br>
 	
 	<label for="book-nationality">Photographer's Nationality</label>
-	<input id="book-nationality" name="book[nationality]">
+	<input class="book-field" id="book-nationality" name="book[nationality]">
 	<br>
 
 	<label for="book-type">Type</label>
-	<input id="book-type" name="book[type]">
+	<input class="book-field" id="book-type" name="book[type]">
 	<br>
 	
 	<label for="book-genre">Genre</label>
-	<input id="book-genre" name="book[genre]">
+	<input class="book-field" id="book-genre" name="book[genre]">
 	<br>
 
-	<label for ="book-textby">Text By</label>
-	<input id="book-textby" name="book[textby]">
+	<label for ="book-textBy">Text By</label>
+	<input class="book-field" id="book-textBy" name="book[textBy]">
 	<br>
 
 	<label for="book-publisher">Publisher</label>
-	<input id="book-publisher" name="book[publisher]">
+	<input class="book-field" id="book-publisher" name="book[publisher]">
 	<br>
 
 	<label for="book-isbn">ISBN</label>
-	<input id="book-isbn" name="book[isbn]">
+	<input class="book-field" id="book-isbn" name="book[isbn]">
 	<br>
 	
 	<label for="book-year">Year Published</label>
-	<input id="book-year" name="book[year]">
+	<input class="book-field" id="book-year" name="book[year]">
 	<br>
 	
 	<label for="book-tags">Tags</label>
-	<input id="book-tags" name="book[tags]">
+	<input class="book-field" id="book-tags" name="book[tags]">
 	<br>
 	
 	<label for="book-comments">Comments</label>
-	<input id="book-comments" name="book[comments]">
+	<input class="book-field" id="book-comments" name="book[comments]">
 	<br> <!--For some reason when this was a textarea it rendered the following input as HTML inside the text area, but changing it to an input fixed the problem. -->
 	
 	<label for="book-signed">Signed</label>
-	<input type=checkbox id="book-signed" name="book[signed]">
+	<input class="book-checkbox" type=checkbox id="book-signed" name="book[signed]">
 
       <button type="submit">Submit</button>
     </form>
@@ -59,6 +59,8 @@
     <ul id="library"></ul>
 
   <script src="./javascripts/jquery.js"></script>
+  <script src="./javascripts/books-database.js"></script>
+  <script src="./javascripts/book.js"></script>
   <script src="./javascripts/application.js"></script> 
   </body>
 </html>
