@@ -1,30 +1,3 @@
-var BookFormView = function(selector) { 
- this.selector = selector;
-};
-
-BookFormView.prototype.getBook = function() {
- var attributes = {};
- var inputs = $('.book-field');
- for (var i = 0; i < inputs.length; i++) {
-  var el = $(inputs[i]);
-  var key = el.attr("name").replace('book[', '').replace(']', '');
-  var value = el.val();
-  attributes[key] = value;
- }
- inputs = $('.book-checkbox');
- for (var i = 0; i < inputs.length; i++) {
-  el = $(inputs[i]);
-  key = el.attr("name").replace('book[', '').replace(']', '');
-  value = el.is(':checked');
-  attributes[key] = value; 
- }
- return new Book(attributes);
-};
-
-BookFormView.prototype.clear = function() {
- 
-}
-
 var database = new LibDatabase();
 
 var books = [
@@ -75,6 +48,8 @@ for(var k = 0; k < books.length; k++){
  database.create(books[k]);
 }
 
+// end creation of hardcoded database as LibDatabase object
+
 $(document).ready(function() {
  refreshList();
 });
@@ -86,7 +61,7 @@ var formView = new BookFormView("#book-form");
   
 refreshList();    
 
-// clears form, needs to be changed to scale to more elements
+// clears form, needs to be changed to scale to more elements i.e. by looping
   $("#book-title").val("");  
   $("#book-photographer").val("");
   $("#book-nationality").val("");
@@ -118,7 +93,8 @@ function showBook(book) {
 	$("<p/>").text(book.comments),
 	$("<p/>").text(book.signed),
 	$("<a/>").text("Remove").click(function () {
-	removeByName(book.title);
+	database.destroy();
+	//removeByName(book.title);
 	refreshList();
      })
    )
@@ -150,6 +126,6 @@ function makeBook(title, photographer, nationality, type, genre, textby, publish
  return book;
 };
 
-function removeByName(title) {
- removeBook(getIndex(title));
-};
+/* function removeByName(title) {
+ database.destroy(title);
+}; */

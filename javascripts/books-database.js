@@ -6,7 +6,7 @@ LibDatabase.prototype.create = function(book) {
  this.books.push(book);
 };
 
-LibDatabase.prototype.getIndex = function(book) {
+LibDatabase.prototype.getIndex = function(title) {
  for (var i=0; i < this.books.length; ++i) {
 	var object = this.books[i];
 	if (object.title === title) {
@@ -15,7 +15,7 @@ LibDatabase.prototype.getIndex = function(book) {
     }
 };
 
-LibDatabase.prototype.destroy = function(book) {
- var k = this.getIndex(book);
+LibDatabase.prototype.destroy = function(title) {
+ var k = this.getIndex(title);
  books.splice(k,1);
 };
