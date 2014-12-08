@@ -56,27 +56,13 @@ $(document).ready(function() {
 
 $("#book-form").submit(function(event) {
  event.preventDefault();
-var formView = new BookFormView("#book-form");
-  database.create(formView.getBook());
-  
-refreshList();    
+ var formView = new BookFormView("#book-form");
+ database.create(formView.getBook());   
+ formView.clear();
+ refreshList(); 
+}); 
 
-// clears form, needs to be changed to scale to more elements i.e. by looping
-  $("#book-title").val("");  
-  $("#book-photographer").val("");
-  $("#book-nationality").val("");
-  $("#book-type").val("");
-  $("#book-genre").val("");
-  $("#book-textby").val("");
-  $("#book-publisher").val("");
-  $("#book-isbn").val("");
-  $("#book-year").val("");
-  $("#book-tags").val("");
-  $("#book-comments").val("");
-  $("#book-signed").val("");
-});
-
-function showBook(book) {
+/*function showBook(book) {
  $("#library").prepend(
     $("<li/>")
       .append(
@@ -93,13 +79,14 @@ function showBook(book) {
 	$("<p/>").text(book.comments),
 	$("<p/>").text(book.signed),
 	$("<a/>").text("Remove").click(function () {
-	database.destroy();
+	this.LibDatabase.destroy(book.title); // ?????
 	//removeByName(book.title);
 	refreshList();
      })
    )
 )
-};
+}; */
+
 
 function refreshList() {
 $('#library').empty(); // Clear books list, otherwise will add same ones over again
