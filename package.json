@@ -1,0 +1,22 @@
+{
+  "name": "media-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/R4D1N/simpler-library.git"
+  },
+  "author": "r4d1n",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/R4D1N/simpler-library/issues"
+  },
+  "homepage": "https://github.com/R4D1N/simpler-library",
+  "dependencies": {
+    "express": "^4.10.5"
+  }
+}
