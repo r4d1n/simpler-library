@@ -5,63 +5,84 @@
   </head>
   <body>
     <form id="book-form">
-      <label for="book-title">Title</label>
+      <label class="form-left" for="book-title">Title</label>
       <input class="book-field" id="book-title" name="book[title]" value="The Valley">
 	<br>
 	
-	<label for="book-photographer">Photographer</label>
+	<label class="form-left" for="book-photographer">Photographer</label>
 	<input class="book-field" id="book-photographer" name="book[photographer]" value="Larry Sultan">
 	<br>
 	
-	<label for="book-nationality">Photographer's Nationality</label>
+	<label class="form-left" for="book-nationality">Photographer's Nationality</label>
 	<input class="book-field" id="book-nationality" name="book[nationality]" value="American">
 	<br>
 
-	<label for="book-type">Type</label>
+	<label class="form-left" for="book-type">Type</label>
 	<input class="book-field" id="book-type" name="book[type]" value="monograph">
 	<br>
 	
-	<label for="book-genre">Genre</label>
+	<label class="form-left" for="book-genre">Genre</label>
 	<input class="book-field" id="book-genre" name="book[genre]" value="Documentary">
 	<br>
 
-	<label for ="book-textBy">Text By</label>
-	<input class="book-field" id="book-textBy" name="book[textBy]">
+	<label class="form-left" for ="book-textBy">Text By</label>
+	<input class="book-field" id="book-textBy" name="book[textby]">
 	<br>
 
-	<label for="book-publisher">Publisher</label>
+	<label class="form-left" for="book-publisher">Publisher</label>
 	<input class="book-field" id="book-publisher" name="book[publisher]">
 	<br>
 
-	<label for="book-isbn">ISBN</label>
+	<label class="form-left" for="book-isbn">ISBN</label>
 	<input class="book-field" id="book-isbn" name="book[isbn]">
 	<br>
 	
-	<label for="book-year">Year Published</label>
+	<label class="form-left" for="book-year">Year Published</label>
 	<input class="book-field" id="book-year" name="book[year]">
 	<br>
 	
-	<label for="book-tags">Tags</label>
+	<label class="form-left" for="book-tags">Tags</label>
 	<input class="book-field" id="book-tags" name="book[tags]">
 	<br>
 	
-	<label for="book-comments">Comments</label>
+	<label class="form-left" for="book-comments">Comments</label>
 	<input class="book-field" id="book-comments" name="book[comments]">
 	<br> 
 	
-	<label for="book-signed">Signed</label>
+	<label class="form-left" for="book-signed">Signed</label>
 	<input class="book-checkbox" type=checkbox id="book-signed" name="book[signed]">
 
-      <button type="submit">Submit</button>
+     <br/><span class="form-left"><button type="submit">Submit Entry</button></span>
     </form>
 
     <h3>Your Library</h3>
-    <ul id="library"></ul>
+    <table id="library">
+	<thead>  	
+	<tr>
+	<th scope="col">Title</th>
+	<th scope="col">Photographer</th>
+	<th scope="col">Nationality</th>
+	<th scope="col">Type</th>
+	<th scope="col">Genre</th>
+	<th scope="col">Text By</th>
+	<th scope="col">Publisher</th>
+	<th scope="col">ISBN</th>
+	<th scope="col">Year</th>
+	<th scope="col">Tags</th>
+	<th scope="col">Comments</th>
+	<th scope="col">Signed</th>
+	<th scope="col">Remove</th>
+	</tr>
+	</thead>
+	<tbody>
+	</tbody>
+    </table>
 
   <script src="./javascripts/jquery.js"></script>
   <script src="./javascripts/books-database.js"></script>
   <script src="./javascripts/book.js"></script>
   <script src="./javascripts/book-form-view.js"></script>
-  <script src="./javascripts/application.js"></script> 
+  <script src="./javascripts/application.js"></script>
+  <link href="./styles.css" rel="stylesheet"> 
   </body>
 </html>

@@ -1,7 +1,7 @@
 var database = new LibDatabase();
 
 $(document).ready(function() {
- database.load(function() { 
+ database.load(function() { // load hardcoded items from server into global variable
   refreshList() 
  });
 });
@@ -16,7 +16,8 @@ $("#book-form").submit(function(event) {
 
 function showBook(book) {
  var arr = ['title', 'photographer', 'nationality', 'type', 'genre', 'textby', 'publisher', 'isbn', 'year', 'tags', 'comments', 'signed'];
- var $li = $('<li/>');
+ var $tr = $('<tr/>');
+ var $td = $('<td/>');
  $.each(arr, function (index, value) {
   var input = book[value]; // scoped in here
   var html = '<p/>';
@@ -24,15 +25,17 @@ function showBook(book) {
    html = '<h3/>';
   }
   var $el = $(html).text(input);
-   $li.append($el);
+  $td = $('<td/>').append($el);
+  $tr.append($td);
   });
   var $remove = $("<a href='#'/>").text("Remove").click(function () {
    database.destroy(book.title); // ?????
    refreshList(); 
    return false
    })
-  $li.append($remove);
-  $('#library').prepend($li);
+  $remove = $('<td/>').append($remove);
+  $tr.append($remove);
+  $('#library').append($tr);
 };
 
 /* var currentBook = this.getBook();
@@ -54,7 +57,9 @@ function showBook(book) {
 
 
 function refreshList() {
-$('#library').empty(); // Clear books list, otherwise will add same ones over again
+ var $tbody = $('#library tbody');
+ $tbody.empty();
+// $('#library').empty(); // Clear books list, otherwise will add same ones over again
  $.each(database.books, function(index, book) {
   showBook(book);
  });

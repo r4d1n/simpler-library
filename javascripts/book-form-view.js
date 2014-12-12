@@ -17,7 +17,9 @@ BookFormView.prototype.getBook = function() {
   el = $(inputs[i]);
   key = el.attr("name").replace('book[', '').replace(']', '');
   value = el.is(':checked');
-  attributes[key] = value; 
+  if (value) {
+   attributes[key] = 'Signed'; 
+  }
  }
  return new Book(attributes);
 };

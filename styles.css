@@ -1,0 +1,45 @@
+a {
+ text-decoration: none;
+}
+
+td, th {
+ padding: 10px;
+ border: 1px solid black;
+}
+
+th {
+ background-color: gray;
+ font-weight: bold;
+}
+
+td {
+ 
+}
+
+tr {
+ height: 10px;
+}
+
+table {
+ border-collapse: collapse;
+ border: 3px solid black;
+ font-size: 1em;
+ width: 85%;
+}
+
+.form-left {
+ display: inline-block;
+ width: 10em;
+ vertical-align: top;
+ text-align: right;
+ margin-right: 15px;	
+ font-weight: bold;
+ height: auto;
+}
+
+.book-field {
+ display: inline-block;
+ width: 25em;
+ border-radius: 5px;
+}
+
