@@ -1,15 +1,15 @@
 var express = require('express')
 var app = express()
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 
 app.use(function(req, res, next) {  // hack to make this work locally for now
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
  });
-
-app.get('/', function (req, res) {
-  res.send('{}')
-})
 
 var booksDB = [{ title: "Protest Photographs", 
 	photographer : "Chauncey Hare",
@@ -52,9 +52,17 @@ var booksDB = [{ title: "Protest Photographs",
 }
 ];
 
-
+app.get('/', function (req, res) {
+  res.json({})
+})
 
 app.get("/books", function(req, res) {
+ res.json({'books' : booksDB});
+});
+
+app.post('/books', function(req, res) {
+ console.log(req.body);
+ booksDB.push(req.body.book);
  res.json({'books' : booksDB});
 });
 
@@ -66,3 +74,5 @@ var server = app.listen(3000, function () {
   console.log('Example app listening at http://%s:%s', host, port)
 
 })
+
+

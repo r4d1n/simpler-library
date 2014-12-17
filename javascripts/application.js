@@ -8,10 +8,9 @@ $(document).ready(function() {
 
 $("#book-form").submit(function(event) {
  event.preventDefault();
- var formView = new BookFormView("#book-form", database);
- database.create(formView.getBook());   
+ var formView = new BookFormView("#book-form", database);  
+ database.send(formView.getBook(), function () { refreshList() });
  formView.clear();
- refreshList(); 
 }); 
 
 function showBook(book) {

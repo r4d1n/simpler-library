@@ -21,7 +21,7 @@ BookFormView.prototype.getBook = function() {
    attributes[key] = 'Signed'; 
   }
  }
- return new Book(attributes);
+ return attributes;
 };
 
 BookFormView.prototype.clear = function() {
