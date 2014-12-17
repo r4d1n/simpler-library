@@ -1,33 +1,38 @@
-var BookFormView = function(selector, database) { 
- this.selector = selector;
- this.database = database;
+var BookFormView = function(selector, database) {
+  this.selector = selector;
+  this.database = database;
 };
 
 BookFormView.prototype.getBook = function() {
- var attributes = {};
- var inputs = $('.book-field');
- for (var i = 0; i < inputs.length; i++) {
-  var el = $(inputs[i]);
-  var key = el.attr("name").replace('book[', '').replace(']', '');
-  var value = el.val();
-  attributes[key] = value;
- }
- inputs = $('.book-checkbox');
- for (var i = 0; i < inputs.length; i++) {
-  el = $(inputs[i]);
-  key = el.attr("name").replace('book[', '').replace(']', '');
-  value = el.is(':checked');
-  if (value) {
-   attributes[key] = 'Signed'; 
+  var attributes = {};
+  var inputs = $('.book-field');
+  for (var i = 0; i < inputs.length; i++) {
+    var el = $(inputs[i]);
+    var key = el.attr("name").replace('book[', '').replace(']', '');
+    var value = el.val();
+    attributes[key] = value;
   }
- }
- return attributes;
+  inputs = $('.book-checkbox');
+  for (var i = 0; i < inputs.length; i++) {
+    el = $(inputs[i]);
+    key = el.attr("name").replace('book[', '').replace(']', '');
+    value = el.is(':checked');
+    if (value) {
+      attributes[key] = 'Signed';
+    }
+  }
+  return attributes;
 };
 
 BookFormView.prototype.clear = function() {
- var inputs = $('.book-field');
+  var inputs = $('.book-field');
+  var $checkbox = $('.book-checkbox');
+  var signed = $('.book-checkbox :checked');
   for (var i = 0; i < inputs.length; i++) {
-   var field = $(inputs[i]);
-   field.val("");
+    var field = $(inputs[i]);
+    field.val("");
+  }
+  if (signed) {
+    $checkbox.removeAttr('checked');
   }
 }
