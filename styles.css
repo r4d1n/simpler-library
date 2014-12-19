@@ -2,6 +2,26 @@ a {
  text-decoration: none;
 }
 
+/* Begin entry form, mainly to clean up spacing */
+
+.form-left {
+  display: inline-block;
+  width: 10em;
+  vertical-align: top;
+  text-align: right;
+  margin-right: 15px;
+  font-weight: bold;
+  height: auto;
+}
+
+.book-field {
+  display: inline-block;
+  width: 25em;
+  border-radius: 5px;
+}
+
+/* Begin collection list table */
+
 td, th {
  padding: 10px;
  border: 1px solid black;
@@ -13,7 +33,7 @@ th {
 }
 
 td {
- 
+
 }
 
 tr {
@@ -27,19 +47,6 @@ table {
  width: 85%;
 }
 
-.form-left {
- display: inline-block;
- width: 10em;
- vertical-align: top;
- text-align: right;
- margin-right: 15px;	
- font-weight: bold;
- height: auto;
+.more-info-box {
+  position : absolute;
 }
-
-.book-field {
- display: inline-block;
- width: 25em;
- border-radius: 5px;
-}
-

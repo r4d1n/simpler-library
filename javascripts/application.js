@@ -13,6 +13,15 @@ $("#book-form").submit(function(event) {
   formView.clear();
 });
 
+function refreshList() {
+  var $tbody = $('#library tbody');
+  $tbody.empty();
+  // $('#library').empty(); // Clear books list, otherwise will add same ones over again
+  $.each(database.books, function(index, book) {
+    showBook(book);
+  });
+}
+
 function showBook(book) {
   var arr = ['title', 'photographer', 'nationality', 'type', 'genre', 'textby', 'publisher', 'isbn', 'year', 'tags', 'comments', 'signed'];
   var $tr = $('<tr/>');
@@ -54,15 +63,6 @@ refreshList();
 )
 ) */
 
-
-function refreshList() {
-  var $tbody = $('#library tbody');
-  $tbody.empty();
-  // $('#library').empty(); // Clear books list, otherwise will add same ones over again
-  $.each(database.books, function(index, book) {
-    showBook(book);
-  });
-}
 
 function makeBook(title, photographer, nationality, type, genre, textby, publisher, isbn, year, tags, comments, signed) {
   var book = new Book({

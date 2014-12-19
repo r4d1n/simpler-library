@@ -1,4 +1,4 @@
-var LibDatabase = function() {
+ var LibDatabase = function() {
   this.books = [];
 };
 

@@ -3,7 +3,7 @@ var app = express()
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
-})); 
+}));
 
 app.use(function(req, res, next) {  // hack to make this work locally for now
   res.header("Access-Control-Allow-Origin", "*");
@@ -11,44 +11,44 @@ app.use(function(req, res, next) {  // hack to make this work locally for now
   next();
  });
 
-var booksDB = [{ title: "Protest Photographs", 
+var booksDB = [{ title: "Protest Photographs",
 	photographer : "Chauncey Hare",
 	nationality : "American",
-	type : "Monograph", 
-	genre : "Documentary", 
+	type : "Monograph",
+	genre : "Documentary",
 	textby : "Chauncey Hare, Judy Wyatt, Jack von Euw",
 	publisher : "SteidlKasher",
 	isbn : "978-3-86521-495-9",
 	year : "2009",
 	tags : "B&W, domesticity, interiors, home, family, political, California, labor, Suburbs",
 	comments : "",
-	signed : false	
+	signed :
 	},
 	{ title : "Incidents",
 	photographer : "Henry Wessel",
 	nationality : "American",
-	type : "Monograph", 
-	genre : "Street", 
+	type : "Monograph",
+	genre : "Street",
 	textby : "",
 	publisher : "Steidl",
 	isbn : "978-3-86930-697-1",
 	year : "2013",
 	tags : "B&W, California, Bay Area, American West",
 	comments : "Has a sense of humor",
-	signed : true
+	signed : "Signed"
 	},
 	{title: "Secondhand",
 	photographer : "",
 	nationality : "",
-	type : "Exhibition Catalog", 
-	genre : "", 
+	type : "Exhibition Catalog",
+	genre : "",
 	textby : "",
 	publisher : "Pier 24 Photography",
 	isbn : "978-0-9839917-5-5",
 	year : "2014",
 	tags : "archives, appropriation, institutions, Bay Area, curation",
 	comments : "What an interesting show.",
-	signed : false
+	signed :
 }
 ];
 
@@ -74,5 +74,3 @@ var server = app.listen(3000, function () {
   console.log('Example app listening at http://%s:%s', host, port)
 
 })
-
-
