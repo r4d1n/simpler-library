@@ -22,7 +22,7 @@ var booksDB = [{ title: "Protest Photographs",
 	year : "2009",
 	tags : "B&W, domesticity, interiors, home, family, political, California, labor, Suburbs",
 	comments : "",
-	signed :
+	signed : ""
 	},
 	{ title : "Incidents",
 	photographer : "Henry Wessel",
@@ -38,8 +38,8 @@ var booksDB = [{ title: "Protest Photographs",
 	signed : "Signed"
 	},
 	{title: "Secondhand",
-	photographer : "",
-	nationality : "",
+	photographer : "Misc.",
+	nationality : "Misc.",
 	type : "Exhibition Catalog",
 	genre : "",
 	textby : "",
@@ -48,7 +48,7 @@ var booksDB = [{ title: "Protest Photographs",
 	year : "2014",
 	tags : "archives, appropriation, institutions, Bay Area, curation",
 	comments : "What an interesting show.",
-	signed :
+	signed : ""
 }
 ];
 

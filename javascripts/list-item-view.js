@@ -1,66 +1,50 @@
-var ListItemView = function(book) { // should be instantiate with object returned by BookFormView getBook() method
+var ListItemView = function(book) { // should be instantiated with object returned by BookFormView getBook() method
   this.book = book;
-  this.moreInfo = $('div').addClass('.more-info-box');
+  this.tableRow = $('<tr/>').addClass('.list-item-row');
+  this.moreInfo = $('<div/>').addClass('.more-info-div');
 }
 
-// ListItemView.prototype.makeNiceKeys() {
-//   var attributes = {};
-//   var inputs = $('.book-field');
-//   for (var i = 0; i < inputs.length; i++) {
-//     var el = $(inputs[i]);
-//     var key = el.attr("name").replace('book[', '').replace(']', '');
-//     var value = el.val();
-//     attributes[key] = value;
-//   }
-//   inputs = $('.book-checkbox');
-//   for (var i = 0; i < inputs.length; i++) {
-//     el = $(inputs[i]);
-//     key = el.attr("name").replace('book[', '').replace(']', '');
-//     value = el.is(':checked');
-//     if (value) {
-//      attributes[key] = 'Signed';
-//    }
-//  }
-//     return attributes;
-// }
-
-ListItemView.prototype.moreContent = function(key, val) { // receives args pair when called in renderListEntry
+ListItemView.prototype.listMoreContent = function(key, val) { // receives args pair when called in renderListEntry
   var $div = this.moreInfo;
   var $pair = $('<ul/>'); // Would it be better if this was a <span/> with <p/> elements inside?
   var $title = $('<li/>').addClass('.more-box-title').text(key);
-  var $spec = $('<li/>').addClass('.more-box-spec');.text(val);
+  var $spec = $('<li/>').addClass('.more-box-spec').text(val);
   $pair.append($title);
   $pair.append($spec);
   $div.append($pair);
 };
 
-ListItemView.prototype.makeRemoveButton = function() {
+ListItemView.prototype.removeButton = function() {
   var $remove = ('<p/>');
 
   this.remove = $remove;
 };
 
-ListItemView.prototype.makeMoreButton = function() {
+ListItemView.prototype.moreButton = function() {
 
-}
+};
 
-ListItemView.prototype.renderListEntry = function() {
+ListItemView.prototype.render = function() {
+  var self = this;
   var obj = this.book;  // passed in when first instantiated
-  var $listItem = $('<tr>').addClass('.list-item-main');
-  var $more = this.moreInfo;
-  $more.css("display", "none");
+  var $cell = $('<td/>');
+  // var $more = this.moreButton()
+  // $more.css("display", "none");
+  var $title = $('<h3/>');
+  var $photographer = $('<p/>');
   var mainKeys = ['photographer', 'title'];
   $.each(obj, function(key, value) {
     if (mainKeys.indexOf(key) > -1) {
-      key === 'title' ? var $title = $('<h3/>').text(value) : var $photographer = $('<p/>').text(value);
+      key === 'title' ? $title = $title.text(value) : $photographer = $photographer.text(value);
     } else {
-      this.moreContent(key, value);
+      self.listMoreContent(key, value);
     }
   });
-  $listItem.append($title);
-  $listItem.append($photographer);
-  $listItem.append($more)
-  $('#library').append($listItem);
+  $cell.append($title);
+  $cell.append($photographer);
+  // this.tableRow.append($more);
+  this.tableRow.append($cell);
+  $('#library').prepend(this.tableRow);
 };
 
 
