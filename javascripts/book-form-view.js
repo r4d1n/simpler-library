@@ -21,7 +21,7 @@ BookFormView.prototype.getBook = function() {
       attributes[key] = 'Signed';
     }
   }
-  return attributes;
+  return attributes; // should it be attributes = new Book?
 };
 
 BookFormView.prototype.clear = function() {

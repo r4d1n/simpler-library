@@ -1,4 +1,4 @@
- var LibDatabase = function() {
+var LibDatabase = function() {
   this.books = [];
 };
 
@@ -13,11 +13,6 @@ LibDatabase.prototype.getIndex = function(title) {
       return i;
     }
   }
-};
-
-LibDatabase.prototype.destroy = function(title) {
-  var k = this.getIndex(title);
-  this.books.splice(k,1);
 };
 
 LibDatabase.prototype.handleResponse = function(response) {
@@ -47,5 +42,20 @@ LibDatabase.prototype.send = function(book, callback) {
     if (callback) {
       callback();
     }
+  });
+};
+
+// LibDatabase.prototype.destroy = function(title) {
+//   var k = this.getIndex(title);
+//   this.books.splice(k,1);
+// };
+
+LibDatabase.prototype.delete = function(title) {
+  var k = this.getIndex(title);
+  $.ajax({
+    url : 'http://localhost:3000/books',
+    type : 'DELETE',
+    // processData : false,
+    data : { remove : k }
   });
 };

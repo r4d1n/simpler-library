@@ -36,8 +36,8 @@ ListItemView.prototype.render = function() {
   $.each(obj, function(key, value) {
     if (mainKeys.indexOf(key) > -1) {
       key === 'title' ? $title = $title.text(value) : $photographer = $photographer.text(value);
-    } else {
-      self.listMoreContent(key, value);
+    // } else {
+    //   self.listMoreContent(key, value);
     }
   });
   $cell.append($title);

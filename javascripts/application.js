@@ -13,7 +13,6 @@ $("#book-form").submit(function(event) {
   // var itemView = new ListItemView(bookObj);
   database.send(viewObj, function () { refreshList() });
   formView.clear();
-
 });
 
 function refreshList() {
@@ -23,31 +22,31 @@ function refreshList() {
     itemView = new ListItemView(book);
     itemView.render();
   });
-}
-
-function showBook(book) {
-  var arr = ['title', 'photographer', 'nationality', 'type', 'genre', 'textby', 'publisher', 'isbn', 'year', 'tags', 'comments', 'signed'];
-  var $tr = $('<tr/>');
-  var $td = $('<td/>');
-  $.each(arr, function (index, value) {
-    var input = book[value]; // scoped in here
-    var html = '<p/>';
-    if (value === 'title') {
-      html = '<h3/>';
-    }
-    var $el = $(html).text(input);
-    $td = $('<td/>').append($el);
-    $tr.append($td);
-  });
-  var $remove = $("<a href='#'/>").text("Remove").click(function () {
-    database.destroy(book.title); // ?????
-    refreshList();
-    return false
-  })
-  $remove = $('<td/>').append($remove);
-  $tr.append($remove);
-  $('#library').append($tr);
 };
+
+// function showBook(book) {
+//   var arr = ['title', 'photographer', 'nationality', 'type', 'genre', 'textby', 'publisher', 'isbn', 'year', 'tags', 'comments', 'signed'];
+//   var $tr = $('<tr/>');
+//   var $td = $('<td/>');
+//   $.each(arr, function (index, value) {
+//     var input = book[value]; // scoped in here
+//     var html = '<p/>';
+//     if (value === 'title') {
+//       html = '<h3/>';
+//     }
+//     var $el = $(html).text(input);
+//     $td = $('<td/>').append($el);
+//     $tr.append($td);
+//   });
+//   var $remove = $("<a href='#'/>").text("Remove").click(function () {
+//     database.destroy(book.title); // ?????
+//     refreshList();
+//     return false
+//   })
+//   $remove = $('<td/>').append($remove);
+//   $tr.append($remove);
+//   $('#library').append($tr);
+// };
 
 /* var currentBook = this.getBook();
 for (key in currentBook) {
@@ -65,25 +64,6 @@ refreshList();
 }
 )
 ) */
-
-
-function makeBook(title, photographer, nationality, type, genre, textby, publisher, isbn, year, tags, comments, signed) {
-  var book = new Book({
-    "title" : title,
-    "photographer" : photographer,
-    "nationality" : nationality,
-    "type" : type,
-    "genre" : genre,
-    "textBy" : textby,
-    "publisher" : publisher,
-    "isbn" : isbn,
-    "year" : year,
-    "tags" : tags,
-    "comments" : comments,
-    "signed" : signed
-  });
-  return book;
-};
 
 /* function removeByName(title) {
 database.destroy(title);
