@@ -1,6 +1,9 @@
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser');
+
+
+app.use(express.static(__dirname + '/public'));
 // app.use(express.logger());
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
