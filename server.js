@@ -76,8 +76,6 @@ app.post('/books', function(req, res) {
 app.delete('/books', function(req, res) {
   console.log(req.body);
   var index = Number(req.body.remove);
-  console.log(index);
-  console.log(booksDB);
   booksDB.splice(index,1);
   res.json({ 'books' : booksDB });
 });
@@ -87,6 +85,6 @@ var server = app.listen(3000, function () {
   var host = server.address().address
   var port = server.address().port
 
-  console.log('Example app listening at http://%s:%s', host, port)
+  console.log('App listening at http://%s:%s', host, port)
 
 })

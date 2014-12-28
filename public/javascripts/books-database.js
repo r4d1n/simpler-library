@@ -2,7 +2,7 @@ var LibDatabase = function() {
   this.books = [];
 };
 
-LibDatabase.prototype.create = function(book) {
+LibDatabase.prototype.make = function(book) {
   this.books.push(book);
 };
 
@@ -20,7 +20,7 @@ LibDatabase.prototype.handleResponse = function(response) {
   this.books = [];
   $.each(response.books, function(index, bookDef) {
     var item = new Book(bookDef);
-    self.create(item);
+    self.make(item);
   })
 };
 
