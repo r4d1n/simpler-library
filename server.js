@@ -7,7 +7,7 @@ var app = express();
 // instantiate handlebars-express engine with config
 var hbs = exphbs.create({
   defaultLayout: 'layout',
-  layoutsDir="views/"
+  layoutsDir: 'views/'
   });
 
 app.use(express.static(__dirname + '/public'));
@@ -83,6 +83,12 @@ signed : ""
 
 /* ~~~%%###%%~~~ End Sample Database ~~~%%###%%~~~ */
 
+app.locals.booksDB = booksDB;
+
+app.get('/', function (req, res) {
+  res.render('home')
+});
+
 app.route('/books')
 .get(function(req, res) {
   res.json({'books' : booksDB});
@@ -98,3 +104,9 @@ app.route('/books')
   booksDB.splice(index,1);
   res.json({ 'books' : booksDB });
 });
+
+app.route('/list')
+.get(function(req, res) {
+  res.render('list')
+  console.log(res.body)
+})
