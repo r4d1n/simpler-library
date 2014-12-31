@@ -50,12 +50,17 @@ LibDatabase.prototype.send = function(book, callback) {
 //   this.books.splice(k,1);
 // };
 
-LibDatabase.prototype.delete = function(title) {
+LibDatabase.prototype.delete = function(title, callback) {
   var k = this.getIndex(title);
   $.ajax({
     url : 'http://localhost:3000/books',
     type : 'DELETE',
     // processData : false,
     data : { remove : k }
+  }).then(function(response) {
+    self.handleResponse(response);
+    if (callback) {
+      callback();
+    }
   });
 };

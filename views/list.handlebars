@@ -1,0 +1,11 @@
+<h2>Your Library</h2>
+<table id="library">
+  {{#each books}}
+  <tr>
+    <td><h3>{{title}}</h3></td>
+    <td><p>{{photographer}}</p></td>
+    <td><p class='more-button'>More</p></td>
+    <td><p class='delete-button'>Delete</p></td>
+  </tr>
+  {{/each}}
+</table>

@@ -1,22 +1,44 @@
-var express = require('express')
-var app = express()
-var bodyParser = require('body-parser');
+var express = require('express');
+var exphbs = require('express-handlebars');
+var bodyParser = require('body-parser'); // does this still need to be here?
 
+var app = express();
+
+// instantiate handlebars-express engine with config
+var hbs = exphbs.create({
+  defaultLayout: 'layout',
+  layoutsDir="views/"
+  });
 
 app.use(express.static(__dirname + '/public'));
 // app.use(express.logger());
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+app.use(bodyParser.urlencoded({  // to support URL-encoded bodies
   extended: true
 }));
 // app.use(express.methodOverride());
 
+// register hbs.engine from express-handlebars module
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
-app.use(function(req, res, next) {  // hack to make this work locally for now
+app.use(function(req, res, next) {  // hacks to run locally
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   res.header("Access-Control-Allow-Methods", "DELETE");
   next();
 });
+
+
+var server = app.listen(3000, function () {
+
+  var host = server.address().address
+  var port = server.address().port
+
+  console.log('App listening at http://%s:%s', host, port)
+
+})
+
+/* ~~~##%%%##~~~ Begin Sample Database ~~~##%%%##~~~ */
 
 var booksDB = [{ title: "Protest Photographs",
 photographer : "Chauncey Hare",
@@ -59,32 +81,20 @@ signed : ""
 }
 ];
 
-app.get('/', function (req, res) {
-  res.json({})
-})
+/* ~~~%%###%%~~~ End Sample Database ~~~%%###%%~~~ */
 
-app.get('/books', function(req, res) {
+app.route('/books')
+.get(function(req, res) {
   res.json({'books' : booksDB});
-});
-
-app.post('/books', function(req, res) {
-  console.log(req.body)
+})
+.post(function(req, res) {
+  // console.log(req.body)
   booksDB.push(req.body.book);
   res.json({'books' : booksDB});
-});
-
-app.delete('/books', function(req, res) {
-  console.log(req.body);
+})
+.delete(function(req, res) {
+  // console.log(req.body);
   var index = Number(req.body.remove);
   booksDB.splice(index,1);
   res.json({ 'books' : booksDB });
 });
-
-var server = app.listen(3000, function () {
-
-  var host = server.address().address
-  var port = server.address().port
-
-  console.log('App listening at http://%s:%s', host, port)
-
-})
