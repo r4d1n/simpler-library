@@ -1,6 +1,18 @@
 a {
- text-decoration: none;
+  text-decoration: none;
 }
+
+.center-main-div {
+  right : 10%;
+  left : 10%;
+}
+
+/* Being nav bar */
+#top-nav li {
+  list-style-type : none;
+}
+
+/* End nav bar */
 
 /* Begin entry form, mainly to clean up spacing */
 
@@ -16,41 +28,41 @@ a {
 
 .book-field {
   display: inline-block;
-  width: 25em;
+  width: 30em;
   border-radius: 5px;
 }
 
+.submit-button-div {
+  margin-right : 20%;
+  margin-left : 20%;
+}
+
+/* End entry form */
+
 /* Begin collection list table */
 
-td, th {
- padding: 10px;
- border: 1px solid black;
-}
-
-th {
- background-color: gray;
- font-weight: bold;
-}
-
 td {
-
+  width: 10px;
+  overflow : hidden;
 }
 
 tr {
- height: 10px;
+  height: 10px;
 }
 
-table {
- border-collapse: collapse;
- border: 3px solid black;
- font-size: 1em;
- width: 85%;
+/* table {
+  border-collapse: collapse;
+  border: 3px solid black;
+  font-size: 1em;
+  width: 85%;
+} */
+
+.list-button-cell {
+  max-width: 10px;
 }
 
 .more-info-box {
   position : absolute;
 }
 
-#main-nav li {
-  list-style-type : none;
-}
+/* End list table */

@@ -15,7 +15,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 var hbs = exphbs.create({
   defaultLayout: 'layout',
   layoutsDir: 'views/',
-  // helpers: helpers
 })
 
 // register hbs.engine from express-handlebars module
@@ -75,7 +74,7 @@ signed : ""
 /* ~~~%%###%%~~~ End Sample Database ~~~%%###%%~~~ */
 
 app.get('/', function (req, res) {
-  res.render('form')
+  res.render('form');
 })
 
 app.route('/books')
