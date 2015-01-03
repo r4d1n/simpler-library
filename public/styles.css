@@ -50,3 +50,7 @@ table {
 .more-info-box {
   position : absolute;
 }
+
+#main-nav li {
+  list-style-type : none;
+}
