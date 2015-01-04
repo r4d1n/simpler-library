@@ -1,5 +1,5 @@
-a {
-  text-decoration: none;
+body {
+  padding-top : 70px;
 }
 
 .center-main-div {
@@ -7,9 +7,10 @@ a {
   left : 10%;
 }
 
-/* Being nav bar */
+/* Begin nav bar */
 #top-nav li {
   list-style-type : none;
+  padding : 10px;
 }
 
 /* End nav bar */
@@ -42,20 +43,18 @@ a {
 /* Begin collection list table */
 
 td {
-  width: 10px;
+  max-width: .5em;
   overflow : hidden;
+  vertical-align : middle;
 }
 
 tr {
   height: 10px;
 }
 
-/* table {
-  border-collapse: collapse;
-  border: 3px solid black;
-  font-size: 1em;
-  width: 85%;
-} */
+table {
+  text-align : center;
+}
 
 .list-button-cell {
   max-width: 10px;

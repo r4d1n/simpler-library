@@ -8,12 +8,13 @@
   <title>SimpLib</title>
 </head>
 <body>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
-        <ul class="nav nav-tabs" id="top-nav">
-          <li>Form</li>
-          <li>List</li>
+        <a class="navbar-brand" href="/">SimpLib</a>
+        <ul class="nav navbar-nav">
+          <li id="form-view-switch"><a href="/form">Add Books</a></li>
+          <li id="list-view-switch"><a href="/list">Browse Library</a></li>
         </ul>
       </div>
     </div>
@@ -24,8 +25,8 @@
   <script src="./libraries/jquery.js"></script>
   <script src="./javascripts/books-database.js"></script>
   <script src="./javascripts/book.js"></script>
-  <script src="./javascripts/book-form-view.js"></script>
   <script src="./javascripts/list-item-view.js"></script>
+  <script src="./javascripts/book-form-view.js"></script>
   <script src="./javascripts/application.js"></script>
 </body>
 </html>

@@ -1,7 +1,6 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser'); // does this still need to be here?
-// var helpers = require('./helpers.js');
 
 var app = express();
 
@@ -74,7 +73,15 @@ signed : ""
 /* ~~~%%###%%~~~ End Sample Database ~~~%%###%%~~~ */
 
 app.get('/', function (req, res) {
+  res.render('home');
+})
+
+app.get('/form', function (req, res) {
   res.render('form');
+})
+
+app.get('/list', function (req, res) {
+  res.render('list', { 'books' : booksDB });
 })
 
 app.route('/books')
@@ -92,9 +99,7 @@ app.route('/books')
   res.json({ 'books' : booksDB });
 })
 
-app.get('/list', function (req, res) {
-  res.render('list', { books : booksDB });
-})
+
 
 var server = app.listen(3000, function () {
 
