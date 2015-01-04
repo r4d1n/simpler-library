@@ -41,19 +41,23 @@ body {
 /* End entry form */
 
 /* Begin collection list table */
+table {
+  text-align: center;
+  border-collapse: collapse;
+}
 
 td {
   max-width: .5em;
-  overflow : hidden;
-  vertical-align : middle;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.main-book-cell {
+  text-align: left;
 }
 
 tr {
   height: 10px;
-}
-
-table {
-  text-align : center;
 }
 
 .list-button-cell {
@@ -61,7 +65,7 @@ table {
 }
 
 .more-info-box {
-  position : absolute;
+  position: absolute;
 }
 
 /* End list table */

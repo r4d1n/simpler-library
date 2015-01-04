@@ -11,4 +11,10 @@ $("#book-form").submit(function(event) {
   formView.clear();
 });
 
-$(".delete-button h3").click(function() {});
+$(".delete-button").click(function(event) {
+  event.preventDefault();
+  var $row = $(this).parents('tr');
+  var $title = $row.find('.book-title').text();
+  $row.remove();
+  database.delete($title);
+});

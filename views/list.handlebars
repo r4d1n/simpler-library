@@ -1,15 +1,25 @@
 <div class='container center-main'>
   <h2>Your Library</h2>
   <table id="library" class="table table-striped">
-    <tbody>
-      {{#each books}}
-      <tr>
-        <td class='list-button-cell'><h3 class='delete-button small text-danger'>X</h3></td>
-        <td><h3>{{title}}</h3></td>
-        <td><h3 class="small">{{photographer}}</h3></td>
-        <td class='list-button-cell'><h3 class='more-button small'>More</h3></td>
-      </tr>
-    </tbody>
+
+    {{#each books}}
+    <tr>
+      <td class='list-button-cell'>
+        <h3 class='small'>
+          <a href="#" class="delete-button text-danger">X</a>
+        </h3>
+      </td>
+      <td class='main-book-cell'>
+        <h3 class="book-title">{{title}}</h3>
+        <h3 class="small text-muted">{{photographer}}</h3>
+      </td>
+      <td class='list-button-cell'>
+        <h3 class='small text-info'>
+          <a href="#" class="more-button">More</a>
+        </h3>
+      </td>
+    </tr>
     {{/each}}
+
   </table>
 </div>

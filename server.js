@@ -93,7 +93,6 @@ app.route('/books')
   res.json({'books' : booksDB});
 })
 .delete(function(req, res) {
-  // console.log(req.body);
   var index = Number(req.body.remove);
   booksDB.splice(index,1);
   res.json({ 'books' : booksDB });
