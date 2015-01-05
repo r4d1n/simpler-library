@@ -98,7 +98,10 @@ app.route('/books')
   res.json({ 'books' : booksDB });
 })
 
-
+app.post('/books/update', function (req, res) {
+  var index = req.body.i;
+  res.render('list', {'books' : booksDB});
+})
 
 var server = app.listen(3000, function () {
 

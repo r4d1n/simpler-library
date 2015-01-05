@@ -51,7 +51,6 @@ LibDatabase.prototype.delete = function(title, callback) {
   $.ajax({
     url : 'http://localhost:3000/books',
     type : 'DELETE',
-    // processData : false,
     data : { remove : k }
   }).then(function(response) {
     self.handleResponse(response);
@@ -61,7 +60,18 @@ LibDatabase.prototype.delete = function(title, callback) {
   });
 };
 
-// LibDatabase.prototype.destroy = function(title) {
-//   var k = this.getIndex(title);
-//   this.books.splice(k,1);
-// };
+LibDatabase.prototype.update = function(input, callback) {
+  
+  $.ajax({
+    url : 'http://localhost3000/books/update',
+    type : POST,
+    data : {
+      i : i,
+      change : input.change }
+  }).then(function(response) {
+    self.handleResponse(response);
+    if (callback) {
+      callback();
+    }
+  });
+}
