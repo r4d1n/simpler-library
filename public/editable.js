@@ -2,7 +2,7 @@ function editable(list, database) {
   var $editEl = $(list).find('.editable');
 
   // Activate editable list, call other functions
-  function activate() {
+  function activate(list) {
     isEditable(list);
     hasDelete(list);
   }
@@ -18,8 +18,10 @@ function editable(list, database) {
     })
     $self.blur(function(){
       $value = $self.val();
-      $self.html($orig).val($value);
-      database.update(entry, $value);
+      var title = getTitle(getRow($self));
+      var key = $self.attr("title");
+      // $self.html($orig).val($value);
+      database.update(title, key, $value);
     })
   }
 
@@ -43,17 +45,6 @@ function editable(list, database) {
     });
   }
 
-  // function getKey(el) {
-  //   var title = rowTitle(listRow(this));
-  //   //   var classes = $(el).attr("class").split();
-  //   //   classes.filter(function(){
-  //   //     for(var i=0; i < classes.length; i++)
-  //   //   })
-  //   //
-  //   //   return { title : key }
-  //   }
+  export activate
 
-  return {
-    activate : activate
-  }
 }

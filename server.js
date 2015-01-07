@@ -99,7 +99,11 @@ app.route('/books')
 })
 
 app.post('/books/update', function (req, res) {
-  var index = req.body.i;
+  console.log(req.body);
+  var i = req.body.item;
+  var key = req.body.key;
+  var val = req.body.val;
+  booksDB[i][key] = val;
   res.render('list', {'books' : booksDB});
 })
 

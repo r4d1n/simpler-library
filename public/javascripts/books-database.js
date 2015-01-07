@@ -60,14 +60,18 @@ LibDatabase.prototype.delete = function(title, callback) {
   });
 };
 
-LibDatabase.prototype.update = function(input, callback) {
-  
+LibDatabase.prototype.update = function(title, key, val, callback) {
+  var self = this;
+  var k = self.getIndex(title);
   $.ajax({
     url : 'http://localhost3000/books/update',
-    type : POST,
+    type : 'POST',
     data : {
-      i : i,
-      change : input.change }
+      item : k,
+      key : key,
+      val : val,
+      crossDomain : true
+      }
   }).then(function(response) {
     self.handleResponse(response);
     if (callback) {
