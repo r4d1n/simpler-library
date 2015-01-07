@@ -1,4 +1,4 @@
-var ListItem = function(context) { // takes object returned by BookFormView getBook()
+var ListItem = function(context) {
   this.book = context;
   this.isEditable();
   this.hasDelete();
@@ -6,14 +6,15 @@ var ListItem = function(context) { // takes object returned by BookFormView getB
 
 // Activate editable list
 ListItem.prototype.isEditable = function() {
-  $('.editable').click(function() {
-    var $self = $(this);
+  var $self;
+  $('.editable').click(function(evt) {
+    $self = $(evt.target);
     var $orig = $self.html();
     var $value = $self.text();
     $self.html("<form><input id='edit-field'></form>")
     $('#edit-field').attr('value', $value);
   })
-  $($self).blur(function(){
+  $self.blur(function(){
     $value = $self.val();
     $self.html($orig).val($value);
     database.update(entry, $value);
@@ -38,7 +39,7 @@ ListItem.prototype.getKey = function(el) {
   //
   //   return { title : key }
   // }
-  
+
 }
 
 ListItem.prototype.hasDelete = function() {
