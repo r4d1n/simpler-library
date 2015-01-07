@@ -1,30 +1,15 @@
-function editableModule(context) {
-  
-  //Manipulating table view
-  var getRow = function(el) {
-    return $(el).parents('tr');
+function editable(list, database) {
+  var $editEl = $(list).find('.editable');
+
+  // Activate editable list, call other functions
+  function activate() {
+    isEditable(list);
+    hasDelete(list);
   }
 
-  var getTitle = function(row) {
-    return $(row).find('.att-title').text();
-  }
-
-  // var getKey = function(el) {
-  //   var title = rowTitle(listRow(this));
-  //   //   var classes = $(el).attr("class").split();
-  //   //   classes.filter(function(){
-  //   //     for(var i=0; i < classes.length; i++)
-  //   //   })
-  //   //
-  //   //   return { title : key }
-  //   }
-
-
-
-  // Activate editable list
-  var isEditable = function() {
+  function isEditable() {
     var $self;
-    $('.editable').click(function(evt) {
+    $editEl.click(function(evt) {
       $self = $(evt.target);
       var $orig = $self.html();
       var $value = $self.text();
@@ -38,8 +23,17 @@ function editableModule(context) {
     })
   }
 
-  // for the delete button
-  var hasDelete = function() {
+  //Getting table view info
+  function getRow(el) {
+    return $(el).parents('tr');
+  }
+
+  function getTitle(row) {
+    return $(row).find('.att-title').text();
+  }
+
+  //Use row and title for delete button
+  function hasDelete() {
     $(".delete-button").click(function(event) {
       event.preventDefault();
       var row = listRow(this);
@@ -49,10 +43,17 @@ function editableModule(context) {
     });
   }
 
-  return {
-    isEditable : isEditable,
-    getRow : getRow,
-    getTitle : getTitle
-  }
+  // function getKey(el) {
+  //   var title = rowTitle(listRow(this));
+  //   //   var classes = $(el).attr("class").split();
+  //   //   classes.filter(function(){
+  //   //     for(var i=0; i < classes.length; i++)
+  //   //   })
+  //   //
+  //   //   return { title : key }
+  //   }
 
+  return {
+    activate : activate
+  }
 }
