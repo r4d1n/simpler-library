@@ -1,4 +1,11 @@
 simplib
 ===============
 
-a simple library, optimized for photobooks
+A simple library, optimized for photobooks.
+
+To contribute or try it out, clone this repo and
+
+npm install
+
+
+
