@@ -26,7 +26,8 @@ LibDatabase.prototype.handleResponse = function(response) {
 
 LibDatabase.prototype.load = function(callback) {
   var self = this;
-  $.get('http://localhost:3000/books').then(function(response) { // response is a json object with a key called books matched w/ array
+  $.get('http://localhost:3000/books').then(function(response) {
+    // response is a json object with a key called books matched w/ array
     self.handleResponse(response);
     if (callback) {
       callback();
