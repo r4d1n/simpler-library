@@ -26,7 +26,7 @@ LibDatabase.prototype.handleResponse = function(response) {
 
 LibDatabase.prototype.load = function(callback) {
   var self = this;
-  $.get('http://localhost:3000/books').then(function(response) {
+  $.get('/books').then(function(response) {
     // response is a json object with a key called books matched w/ array
     self.handleResponse(response);
     if (callback) {
@@ -38,7 +38,7 @@ LibDatabase.prototype.load = function(callback) {
 LibDatabase.prototype.send = function(book, callback) {
   var self = this;
   var body = { "book" : book };
-  $.post('http://localhost:3000/books', body).then(function(response) {
+  $.post('/books', body).then(function(response) {
     self.handleResponse(response);
     if (callback) {
       callback();
@@ -50,7 +50,7 @@ LibDatabase.prototype.delete = function(title, callback) {
   var self = this;
   var k = self.getIndex(title);
   $.ajax({
-    url : 'http://localhost:3000/books',
+    url : '/books',
     type : 'DELETE',
     data : { remove : k }
   }).then(function(response) {
@@ -65,7 +65,7 @@ LibDatabase.prototype.update = function(title, key, val, callback) {
   var self = this;
   var k = self.getIndex(title);
   $.ajax({
-    url : 'http://localhost3000/books/update',
+    url : '/books/update',
     type : 'POST',
     data : {
       item : k,
