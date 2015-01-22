@@ -6,7 +6,7 @@ var ListView = function(list, context) {
 }
 
 
-  var $editEl = $(list).find('.editable');
+  // var $editEl = $(list).find('.editable');
 
   // Activate editable list, call other functions
   ListView.prototype.activate = function(list) {

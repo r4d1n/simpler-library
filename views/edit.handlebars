@@ -1,0 +1,8 @@
+<form id="book-form" method="post" action="/books/{{book.id}}">
+  <div class="form-group">
+    <label class="form-left" for="book-title">Title</label>
+    <input class="book-field" id="book-title" name="book[title]" value="{{book.title}}">
+    <br>
+  </div>
+    <button type="submit" class="btn">Save</button>
+</form>

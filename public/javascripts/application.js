@@ -14,3 +14,12 @@ $("#book-form").submit(function(event) {
   database.send(formView.getBook());
   formView.clear();
 })
+
+$('.book-edit-link').click(function() {
+  var $self = $(this);
+  var href = $self.attr('href');
+  $.get(href).then(function(res) {
+   $self.closest('tr').find('.main-book-cell').html(res);
+  });
+  return false;
+})
