@@ -4,21 +4,23 @@
 
     {{#each books}}
     <tr>
+      <td class='main-book-cell'>
+        <h3 class="att-title" title="title">{{title}}</h3>
+        <h3 class="att-photographer small text-muted" title="photographer">{{photographer}}</h3>
+      </td>
       <td class='list-button-cell'>
-        <h3 class='small'>
-          <a href="#" class="delete-button text-danger">X</a>
-        </h3>
         <h3 class='small'>
           <a class='book-edit-link' href="/books/{{id}}/edit">Edit</a>
         </h3>
       </td>
-      <td class='main-book-cell'>
-        <h3 class="att-title editable" title="title">{{title}}</h3>
-        <h3 class="att-photographer small text-muted editable" title="photographer">{{photographer}}</h3>
+      <td class='list-button-cell'>
+        <h3 class='small'>
+          <a href="#" class="more-button">More</a>
+        </h3>
       </td>
       <td class='list-button-cell'>
-        <h3 class='small text-info'>
-          <a href="#" class="more-button">More</a>
+        <h3 class='small'>
+          <a href="/books/{{id}}/delete" class="delete-button"><i class="fa fa-trash"></i></a>
         </h3>
       </td>
     </tr>

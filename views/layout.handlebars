@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="/styles.css" rel="stylesheet">
   <title>SimpLib</title>
 </head>
@@ -12,7 +13,8 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">SimpLib</a>
-        <ul class="nav navbar-nav">
+        <!-- nav-tabs will require jquery to add/remove 'active' class -->
+        <ul class="nav navbar-nav nav-tabs">
           <li id="form-view-switch"><a href="/form">Add Books</a></li>
           <li id="list-view-switch"><a href="/list">Browse Library</a></li>
         </ul>
@@ -22,13 +24,13 @@
 
   {{{body}}}
 
-
-  <script src="/libraries/jquery.js"></script>
-  <script src="/javascripts/books-database.js"></script>
-  <script src="/javascripts/book.js"></script>
-  <script src="/javascripts/list-item-view.js"></script>
-  <script src="/javascripts/book-form-view.js"></script>
+  <script src="/javascripts/jquery.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script src="/javascripts/application.js"></script>
-
+  <!--
+  <script src="/javascripts/book-form-view.js"></script>
+  <script src="/javascripts/list-item-view.js"></script>
+  <script src="/javascripts/book.js"></script>
+-->
 </body>
 </html>
