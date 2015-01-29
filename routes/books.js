@@ -1,11 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var booksDB = require('./fake-db.js')
 
 router.get('/', function(req, res) {
   res.json({'books' : booksDB});
 })
 
 router.post('/', function(req, res) {
+  console.log(req.body.book);
   booksDB.push(req.body.book);
   res.json({'books' : booksDB});
 })
@@ -35,9 +37,8 @@ router.get('/:id/edit', function (req, res) {
   });
 })
 
-app.post('/books/update', function (req, res) {
+router.post('/books/update', function (req, res) {
   console.log(req.body);
-
   var key = req.body.key;
   var val = req.body.val;
   booksDB[i][key] = val;

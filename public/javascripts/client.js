@@ -1,7 +1,19 @@
 $(document).ready(function() {
-  $("#book-form").submit(function(event) {
-    event.preventDefault();
+  // Make form or list 'active' in nav
+  var path = window.location.pathname;
+  $('.nav-tabs').children().removeClass('active');
+  if (path === '/list') {
+    $('#list-view-switch').addClass('active');
+  } else if (path === '/form') {
+    $('#form-view-switch').addClass('active');
+  };
 
+  $('#book-form').submit(function() {
+    var $self = $(this);
+    $.post('/books/', { book : $self }).then(function(res) {
+      console.log('Book Added');
+    })
+    return false
   });
 
   $('.book-edit-link').click(function() {

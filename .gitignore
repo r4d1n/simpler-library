@@ -3,5 +3,8 @@ npm-debug.log
 node_modules
 *.swp
 index.html
+public/bootstrap/
 public/bootstrap/*
 public/javascripts/jquery.js
+public/font-awesome-4.2.0/
+public/font-awesome-4.2.0/*
