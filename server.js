@@ -1,6 +1,6 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
-var bodyParser = require('body-parser'); // does this still need to be here?
+var bodyParser = require('body-parser');
 
 var app = express();
 

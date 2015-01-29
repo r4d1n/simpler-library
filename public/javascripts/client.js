@@ -9,10 +9,12 @@ $(document).ready(function() {
   };
 
   $('#book-form').submit(function() {
-    var $self = $(this);
-    $.post('/books/', { book : $self }).then(function(res) {
+    var data = $(this).serialize();
+    console.log(data);
+    $.post('/books/', data).then(function(res) {
       console.log('Book Added');
     })
+    // $(this).trigger('reset');
     return false
   });
 

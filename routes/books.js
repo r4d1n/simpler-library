@@ -1,48 +1,75 @@
 var express = require('express');
 var router = express.Router();
-var booksDB = require('./fake-db.js')
+var bodyParser = require('body-parser');
+var knex = require('knex')({
+  client: 'sqlite3',
+  debug: true,
+  connection: {
+    filename: './dev.sqlite3'
+  }
+});
+var booksDB = require('./fake-db.js');
+
+router.use(bodyParser.urlencoded({ extended: true }))
+
+router.get('/debug', function(req, res) {
+  knex.select().table('books')
+  .then(function(resp) {
+    console.log(resp);
+    res.json({});
+  })
+})
 
 router.get('/', function(req, res) {
   res.json({'books' : booksDB});
 })
 
 router.post('/', function(req, res) {
-  console.log(req.body.book);
-  booksDB.push(req.body.book);
-  res.json({'books' : booksDB});
+  var newBook = req.body.book;
+  knex('books').insert({ title : newBook.title, photographer : newBook.photographer })
+  .then(function() {
+    res.json({});
+  })
 })
 
 router.post('/:id', function(req, res) {
-  var book = booksDB[req.params.id];
   var bookData = req.body.book;
-  for(var key in bookData) {
-    book[key] = bookData[key];
-  }
-  res.render('list', {'books' : booksDB});
-})
-
-router.post('/:id/delete', function(req, res) {
-  var index = Number(req.body.remove);
-  booksDB.splice(index,1);
-  res.json({ 'books' : booksDB });
+  knex('books')
+  .where('id', req.params.id)
+  .update(bookData)
+  .then(function() {
+    return knex.select().table('books');
+  })
+  .then(function(books) {
+    res.render('list', {'books' : books});
+  })
 })
 
 router.get('/:id/edit', function (req, res) {
   // fetch book via id and pass to render
-  var book = booksDB[req.params.id];
-  console.log(book);
-  res.render('edit', {
-    book : book,
-    layout: false
+  knex('books').where('id', req.params.id)
+  .then(function(result) {
+    console.log(result);
+    var book = result[0];
+    // console.log(book);
+    res.render('edit', {
+      book : book,
+      layout: false
+    });
   });
 })
 
-router.post('/books/update', function (req, res) {
-  console.log(req.body);
-  var key = req.body.key;
-  var val = req.body.val;
-  booksDB[i][key] = val;
-  res.render('list', {'books' : booksDB});
+router.post('/:id/delete', function(req, res) {
+  knex('books')
+  .where('id', req.params.id)
+  .del()
+  .then(function() {
+    return knex.select().table('books');
+  })
+  .then(function(books) {
+    res.render('list', {'books' : books});
+  })
 })
+
 
 module.exports = router;
