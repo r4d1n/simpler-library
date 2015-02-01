@@ -26,7 +26,20 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
   var newBook = req.body.book;
-  knex('books').insert({ title : newBook.title, photographer : newBook.photographer })
+  knex('books').insert({
+    title : newBook.title,
+    photographer : newBook.photographer,
+    nationality : newBook.nationality,
+    type : newBook.type,
+    genre: newBook.genre,
+    textby : newBook.textby,
+    publisher : newBook.publisher,
+    isbn : newBook.isbn,
+    year : newBook.year,
+    tags : newBook.tags,
+    comments : newBook.comments,
+    signed : newBook.signed
+    })
   .then(function() {
     res.json({});
   })
@@ -67,7 +80,7 @@ router.post('/:id/delete', function(req, res) {
     return knex.select().table('books');
   })
   .then(function(books) {
-    res.render('list', {'books' : books});
+    res.render('list', { 'books' : books });
   })
 })
 
