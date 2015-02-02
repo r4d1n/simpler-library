@@ -13,6 +13,9 @@ $(document).ready(function() {
     console.log(data);
     $.post('/books/', data).then(function(res) {
       console.log('Book Added');
+      $('#book-form').each(function() {
+        this.reset();
+      })
     })
     // $(this).trigger('reset');
     return false
