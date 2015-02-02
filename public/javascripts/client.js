@@ -30,4 +30,10 @@ $(document).ready(function() {
     return false;
   });
 
+  $('.delete-button').click(function() {
+    $.post('/books/' + id + '/delete/').then(function() {
+
+    })
+  }); // end delete button
+
 }); // end document ready

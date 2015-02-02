@@ -38,7 +38,7 @@ router.post('/', function(req, res) {
     year : newBook.year,
     tags : newBook.tags,
     comments : newBook.comments,
-    signed : newBook.signed
+    signed : newBook.signed,
     })
   .then(function() {
     res.json({});

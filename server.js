@@ -1,7 +1,13 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
-
+var knex = require('knex')({
+  client: 'sqlite3',
+  debug: true,
+  connection: {
+    filename: './dev.sqlite3'
+  }
+});
 var app = express();
 
 // require & use routes

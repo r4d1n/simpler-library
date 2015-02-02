@@ -1,7 +1,7 @@
 'use strict';
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('books', function (table) {
-    table.increments();
+    table.increments().primary();
     table.string('title');
     table.string('photographer');
     table.string('nationality');
@@ -10,11 +10,12 @@ exports.up = function(knex, Promise) {
     table.string('textby');
     table.string('publisher');
     table.string('isbn');
-    table.string('year');
+    table.integer('year');
     table.string('tags');
     table.string('comments');
     table.string('signed');
-    table.timestamps();
+    table.dateTime('created_at').notNullable();
+    table.dateTime('updated_at').nullable();
   })
 };
 

@@ -7,6 +7,9 @@ module.exports = {
     debug: true,
     connection: {
       filename: './dev.sqlite3'
+    },
+    seeds: {
+      directory: './seeds'
     }
   },
 
