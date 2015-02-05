@@ -1,48 +1,51 @@
 <div class='container center-main'>
   <div class='panel panel-default'>
     <table id="library" class="table table-striped">
-
+      <tr>
+        <th><h3>Primary Data</h3></th>
+        <th><h3>Publication Info</h3></th>
+        <th><h3>Tags</h3></th>
+        <th><h3>Notes</h3></th>
+        <th></th> <!-- Above the buttons -->
+      </tr>
       {{#each books}}
       <tr>
         <td class='main-book-cell'>
+
           <h3 class="att-title" title="title">{{title}}</h3>
           <h3 class="small text-muted" title="photographer">{{photographer}}</h3>
           <h3 class="small text-muted" title="nationality">{{nationality}}</h3>
+          <h3 class="small text-muted" title="type">Type: {{type}}</h3>
+          <h3 class="small text-muted" title="genre">Genre: {{genre}}</h3>
         </td>
         <td class='main-book-cell'>
-          <h3 class="small text-muted" title="publisher">{{publisher}}</h3>
-          <h3 class="small text-muted" title="year">{{year}}</h3>
-          <h3 class="small text-muted" title="isbn">{{isbn}}</h3>
-        </td>
-        <td class='main-book-cell'>
-          <h3 class="small text-muted" title="type">{{type}}</h3>
-          <h3 class="small text-muted" title="genre">{{genre}}</h3>
-          <h3 class="small text-muted" title="textby">{{textby}}</h3>
-        </td>
-        <td class='main-book-cell'>
-          <h3 class="small text-muted" title="added">{{created_at}}</h3>
-          <h3 class="small text-muted" title="updated">{{updated_at}}</h3>
-          <h3 class="small text-muted" title="comments">{{comments}}</h3>
+          <h3 class="small text-muted" title="year">Year: {{year}}</h3>
+          <h3 class="small text-muted" title="publisher">By: {{publisher}}</h3>
+          <h3 class="small text-muted" title="isbn">ISBN: {{isbn}}</h3>
+          <h3 class="small text-muted" title="textby">Text By: {{textby}}</h3>
         </td>
         <td class='main-book-cell'>
           <h3 class="small text-muted" title="tags">{{tags}}</h3>
         </td>
+        <td class='main-book-cell'>
+          <h3 class="small text-muted" title="added">Added: {{created_at}}</h3>
+          <h3 class="small text-muted" title="updated">Updated: {{updated_at}}</h3>
+          <h3 class="small text-muted" title="comments">Comments: {{comments}}</h3>
+        </td>
         <td class='list-button-cell'>
-          <div class="btn-group" role="group">
-            <button class="btn btn-default">
-              <i class="fa fa-list"></i>
-            </button>
+          <button class="btn btn-default">
+            <i class="fa fa-list"></i>
+          </button>
 
-            <button class="edit-button btn btn-default" href="/books/{{id}}/edit">
-              <i class="fa fa-pencil"></i>
-            </button>
+          <button class="edit-button btn btn-default" href="/books/{{id}}/edit">
+            <i class="fa fa-pencil"></i>
+          </button>
 
-            <!-- <form action="/books/{{id}}/delete" method="POST" class="btn delete-button">  -->
-            <button class="btn btn-default">
-              <i class="fa fa-trash"></i>
-            </button>
-            {{!-- </form> --}}
-          </div>
+          <!-- <form action="/books/{{id}}/delete" method="POST" class="btn delete-button">  -->
+          <button class="btn btn-default">
+            <i class="fa fa-trash"></i>
+          </button>
+          <!--  </form> -->
         </td>
       </tr>
 

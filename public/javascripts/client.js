@@ -1,3 +1,5 @@
+'use strict'
+
 $(document).ready(function() {
   // Make form or list 'active' in nav
   var path = window.location.pathname;
