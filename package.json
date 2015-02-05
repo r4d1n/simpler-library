@@ -23,7 +23,7 @@
     "body-parser": "^1.10.0",
     "express": "^4.10.5",
     "express-handlebars": "^1.1.0",
-    "knex": "^0.6.22",
+    "knex": "^0.7.3",
     "sqlite3": "^3.0.4"
   }
 }
