@@ -15,7 +15,7 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="/">SimpLib</a>
         <!-- nav-tabs will require jquery to add/remove 'active' class -->
-        <ul class="nav navbar-nav nav-tabs">
+        <ul class="nav navbar-nav">
           <li id="form-view-switch"><a href="/books/new">Add Books</a></li>
           <li id="list-view-switch"><a href="/books/show">Browse Library</a></li>
         </ul>
@@ -38,9 +38,9 @@
   </div>
   {{/each}}
   {{/if}}
-
-  {{{body}}}
-
+  <div id="mainDiv">
+    {{{body}}}
+  </div>
   <script src="/javascripts/jquery.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
   <script src="/javascripts/client.js"></script>

@@ -19,23 +19,38 @@ $(document).ready(function() {
         this.reset();
       })
     })
-    // $(this).trigger('reset');
     return false
   });
 
-  $('.book-edit-link').click(function() {
-    var $self = $(this);
-    var href = $self.attr('href');
-    $.get(href).then(function(res) {
-      $self.closest('tr').find('.main-book-cell').html(res);
-    });
-    return false;
-  });
-
-  $('.delete-button').click(function() {
-    $.post('/books/' + id + '/delete/').then(function() {
-
-    })
-  }); // end delete button
+  // $('.book-edit-link').click(function() {
+  //   var $self = $(this);
+  //   var href = $self.attr('href');
+  //   $.get(href).then(function(res) {
+  //     $self.closest('tr').find('.main-book-cell').html(res);
+  //   });
+  //   return false;
+  // });
 
 }); // end document ready
+
+$('#deleteModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget); // Button that triggered the modal
+  var title = button.data('title'); // Extract info from data-* attributes
+  var id = button.data('id');
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this);
+  console.log(id);
+  modal.find('.modal-title').text('Delete ' + title);
+  modal.find('.modal-body').text('Are you sure you want to remove ' + title + ' from the library?');
+  $('.delete-button').click(function() {
+    console.log('clicked delete');
+    $.post('/books/' + id + '/delete/', function(res) {
+      // $('#deleteModal').modal('hide');
+      window.location.reload();
+      // console.log(res);
+      // $('#mainDiv').html(res);
+    })
+    return false;
+  }); // end delete button
+});

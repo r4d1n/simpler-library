@@ -36,7 +36,7 @@ var User = {
       password: "stringpassword--" + password
     })
     .then(function(dbUsers) {
-      console.log(dbUsers);
+      // console.log(dbUsers);
       // there should only be one because emails are unique
       if (dbUsers.length === 1) {
         var tempUser = User.create();
@@ -53,7 +53,7 @@ var User = {
       id: id
     })
     .then(function(dbUsers) {
-      console.log(dbUsers);
+      // console.log(dbUsers);
       // there should only be one because emails are unique
       if (dbUsers.length === 1) {
         var tempUser = User.create();

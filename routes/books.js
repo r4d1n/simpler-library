@@ -24,7 +24,6 @@ router.get('/new', function (req, res) {
 router.get('/show', function (req, res) {
   knex.select().table('books')
   .then(function(books) {
-    console.log(books);
     res.render('books/show', { 'books' : books });
   })
 })
@@ -79,9 +78,7 @@ router.get('/:id/edit', function (req, res) {
   // fetch book via id and pass to render
   knex('books').where('id', req.params.id)
   .then(function(result) {
-    console.log(result);
     var book = result[0];
-    // console.log(book);
     res.render('books/edit', {
       book : book,
       layout: false
@@ -97,7 +94,10 @@ router.post('/:id/delete', function(req, res) {
     return knex.select().table('books');
   })
   .then(function(books) {
-    res.render('books/show', { 'books' : books });
+    res.redirect('books/show', {
+      'books': books,
+      // layout: false
+    });
   })
 })
 

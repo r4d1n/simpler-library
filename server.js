@@ -1,7 +1,7 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
 var session = require('express-session');
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
 
 var app = express();
 
@@ -38,7 +38,7 @@ app.use('/users', users);
 app.use(express.static(__dirname + '/public'));
 
 // to support URL-encoded bodies
-app.use(bodyParser.urlencoded({ extended: true }))
+// app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(express.methodOverride());
 
 // instantiate handlebars-express engine with config
