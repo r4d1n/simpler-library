@@ -13,7 +13,11 @@ var users = require('./routes/users');
 var User = require('./models/user');
 
 // user session middleware
-app.use(session({secret: ';askjfi[pojas;lkva;lksjvlkajdsv;lkjas;lkva'}));
+app.use(session({
+  secret: ';askjfi[pojas;lkva;lksjvlkajdsv;lkjas;lkva',
+  saveUninitialized: true,
+  resave: true }));
+
 app.use(function(req, res, next) {
   User.find(req.session.userId)
   .then(function(user) {
