@@ -19,9 +19,25 @@
           <li id="form-view-switch"><a href="/form">Add Books</a></li>
           <li id="list-view-switch"><a href="/list">Browse Library</a></li>
         </ul>
+        <ul class="nav navbar-nav pull-right">
+          {{#if currentUser}}
+          <li>{{currentUser.email}}</li>
+          <li><a href="/users/logout">Log Out</a></li>
+          {{else}}
+          <li><a href="/users/new">Create User</a></li>
+          <li><a href="/users/login">Log In</a></li>
+          {{/if}}
+        </ul>
       </div>
     </div>
   </nav>
+  {{#if errorMessages}}
+  {{#each errorMessages}}
+  <div class='alert alert-error'>
+    {{this}}
+  </div>
+  {{/each}}
+  {{/if}}
 
   {{{body}}}
 

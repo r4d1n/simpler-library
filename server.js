@@ -1,22 +1,36 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
+var session = require('express-session');
 var bodyParser = require('body-parser');
-var knex = require('knex')({
-  client: 'sqlite3',
-  debug: true,
-  connection: {
-    filename: './dev.sqlite3'
-  }
-});
+
 var app = express();
 
-// require & use routes
+// require routes
 var routes = require('./routes/index');
 var books = require('./routes/books');
-var database = require('./routes/fake-db.js');
+var users = require('./routes/users');
 
+var User = require('./models/user');
+
+// user session middleware
+app.use(session({secret: ';askjfi[pojas;lkva;lksjvlkajdsv;lkjas;lkva'}));
+app.use(function(req, res, next) {
+  User.find(req.session.userId)
+  .then(function(user) {
+    req.currentUser = user;
+    next();
+  })
+  .catch(function() {
+    next();
+  })
+});
+
+// use routes
 app.use('/', routes);
 app.use('/books', books);
+app.use('/users', users);
+
+app.use(express.static(__dirname + '/public'));
 
 // to support URL-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }))

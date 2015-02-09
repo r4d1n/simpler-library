@@ -1,14 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var knex = require('knex')({
-  client: 'sqlite3',
-  debug: true,
-  connection: {
-    filename: './dev.sqlite3'
-  }
-});
-var booksDB = require('./fake-db.js');
+var knex = require('../config/database');
 
 router.use(bodyParser.urlencoded({ extended: true }))
 
@@ -24,25 +17,34 @@ router.get('/', function(req, res) {
   res.json({'books' : booksDB});
 })
 
+
+
 router.post('/', function(req, res) {
   var newBook = req.body.book;
-  knex('books').insert({
-    title : newBook.title,
-    photographer : newBook.photographer,
-    nationality : newBook.nationality,
-    type : newBook.type,
-    genre: newBook.genre,
-    textby : newBook.textby,
-    publisher : newBook.publisher,
-    isbn : newBook.isbn,
-    year : newBook.year,
-    tags : newBook.tags,
-    comments : newBook.comments,
-    signed : newBook.signed,
+  if(!req.currentUser) {
+    res.redirect('users/login')
+  } else {
+    knex('books').insert({
+      title : newBook.title,
+      photographer : newBook.photographer,
+      nationality : newBook.nationality,
+      type : newBook.type,
+      genre: newBook.genre,
+      textby : newBook.textby,
+      publisher : newBook.publisher,
+      isbn : newBook.isbn,
+      year : newBook.year,
+      tags : newBook.tags,
+      comments : newBook.comments,
+      signed : newBook.signed,
+      created_at: new Date(),
+      updated_at: new Date(),
+      user_id: req.currentUser.id
     })
-  .then(function() {
-    res.json({});
-  })
+    .then(function() {
+      res.json({});
+    })
+  }
 })
 
 router.post('/:id', function(req, res) {

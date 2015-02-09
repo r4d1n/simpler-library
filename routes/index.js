@@ -1,20 +1,19 @@
 var express = require('express');
 var router = express.Router();
-var knex = require('knex')({
-  client: 'sqlite3',
-  debug: true,
-  connection: {
-    filename: './dev.sqlite3'
-  }
-});
-var booksDB = require('./fake-db.js')
+var knex = require('../config/database');
+var User = require('../models/user');
+
 
 router.get('/', function (req, res) {
-  res.render('home');
+  res.render('home', { currentUser: req.currentUser });
 })
 
 router.get('/form', function (req, res) {
-  res.render('form');
+  if(req.currentUser){
+    res.render('form');
+  } else {
+    res.redirect('users/login');
+  }
 })
 
 router.get('/list', function (req, res) {
