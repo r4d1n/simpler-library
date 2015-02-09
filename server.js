@@ -22,6 +22,7 @@ app.use(function(req, res, next) {
   User.find(req.session.userId)
   .then(function(user) {
     req.currentUser = user;
+    // res.render({ currentUser: req.currentUser });
     next();
   })
   .catch(function() {

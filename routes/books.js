@@ -13,16 +13,31 @@ router.get('/debug', function(req, res) {
   })
 })
 
+router.get('/new', function (req, res) {
+  if(req.currentUser){
+    res.render('books/new');
+  } else {
+    res.redirect('../users/login');
+  }
+})
+
+router.get('/show', function (req, res) {
+  knex.select().table('books')
+  .then(function(books) {
+    console.log(books);
+    res.render('books/show', { 'books' : books });
+  })
+})
+
 router.get('/', function(req, res) {
   res.json({'books' : booksDB});
 })
 
 
-
 router.post('/', function(req, res) {
   var newBook = req.body.book;
   if(!req.currentUser) {
-    res.redirect('users/login')
+    res.redirect('../users/login')
   } else {
     knex('books').insert({
       title : newBook.title,
@@ -56,7 +71,7 @@ router.post('/:id', function(req, res) {
     return knex.select().table('books');
   })
   .then(function(books) {
-    res.render('list', {'books' : books});
+    res.render('books/show', {'books' : books});
   })
 })
 
@@ -67,7 +82,7 @@ router.get('/:id/edit', function (req, res) {
     console.log(result);
     var book = result[0];
     // console.log(book);
-    res.render('edit', {
+    res.render('books/edit', {
       book : book,
       layout: false
     });
@@ -82,7 +97,7 @@ router.post('/:id/delete', function(req, res) {
     return knex.select().table('books');
   })
   .then(function(books) {
-    res.render('list', { 'books' : books });
+    res.render('books/show', { 'books' : books });
   })
 })
 

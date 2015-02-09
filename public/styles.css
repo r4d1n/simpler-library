@@ -107,7 +107,7 @@ td {
 
 .main-book-cell {
   text-align: left;
-  width: 20%;
+  width: 27%;
 }
 
 tr {
@@ -115,7 +115,7 @@ tr {
 }
 
 .list-button-cell {
-  max-width: 10px;
+  width: auto;
 }
 
 /* End list table */
