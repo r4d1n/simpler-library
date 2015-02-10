@@ -1,6 +1,9 @@
 'use strict'
 
 $(document).ready(function() {
+  if ($('.more-info-cell')) {
+    $('.more-info-cell').hide();
+  };
   // Make form or list 'active' in nav
   var path = window.location.pathname;
   $('.nav-tabs').children().removeClass('active');
@@ -33,24 +36,44 @@ $(document).ready(function() {
 
 }); // end document ready
 
+// Library list modals
 $('#deleteModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
-  var title = button.data('title'); // Extract info from data-* attributes
-  var id = button.data('id');
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this);
-  console.log(id);
+  // Extract info from data-* attributes
+  var title = button.data('title');
+  var id = button.data('id');
+  // Write into modal
   modal.find('.modal-title').text('Delete ' + title);
   modal.find('.modal-body').text('Are you sure you want to remove ' + title + ' from the library?');
+  // Delete a book
   $('.delete-button').click(function() {
-    console.log('clicked delete');
     $.post('/books/' + id + '/delete/', function(res) {
-      // $('#deleteModal').modal('hide');
       window.location.reload();
-      // console.log(res);
-      // $('#mainDiv').html(res);
     })
     return false;
   }); // end delete button
-});
+}); // end delete modal
+
+$('#fullListModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget); // Button that triggered the modal
+  var modal = $(this);
+  // Extract info from data-* attributes
+  var title = button.data('title');
+  var id = button.data('id');
+  // Get all of the book info
+  var row = button.closest('tr').clone();
+  $(row).children('.list-button-cell').remove();
+  // And turn it from a row into a div full of spans
+  function buildList(row) {
+    $(row).children('td')
+    .map(function() {
+      $(this).replaceWith($("<span>" + this.innerHTML + "</span>"));
+    })
+    return $(row).replaceWith($("<div>" + row.innerHTML + "</div>")).html();
+  }; // end buildList function
+  var list = buildList(row);
+  // console.log(list);
+  modal.find('.modal-title').text(title);
+  modal.find('.modal-body').html(list);
+}); // end list all modal

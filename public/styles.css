@@ -49,7 +49,6 @@ table {
 
 /*End CSS Reset*/
 
-
 body {
   padding-top : 70px;
   font-family: 'Titillium Web', sans-serif;
@@ -58,6 +57,10 @@ body {
 .center-main-div {
   right : 10%;
   left : 10%;
+}
+
+span h3 {
+  padding: 5px 0px;
 }
 
 /* Begin nav bar */
@@ -105,7 +108,7 @@ td {
   vertical-align: middle;
 }
 
-.main-book-cell {
+td.main-book-cell {
   text-align: left;
   width: 27%;
 }
@@ -117,5 +120,7 @@ tr {
 .list-button-cell {
   width: auto;
 }
+
+
 
 /* End list table */

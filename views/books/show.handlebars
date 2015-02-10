@@ -4,17 +4,16 @@
       <tr>
         <th><h3>Primary Data</h3></th>
         <th><h3>Publication Info</h3></th>
-        <th><h3>Tags</h3></th>
+        <th><h3>More Info</h3></th>
         <th></th> <!-- Above the buttons -->
       </tr>
 
       {{#each books}}
       <tr>
         <td class='main-book-cell'>
-
           <h3 class="att-title" title="title">{{title}}</h3>
-          <h3 class="small text-muted" title="photographer">{{photographer}}</h3>
-          <h3 class="small text-muted" title="nationality">{{nationality}}</h3>
+          <h3 class="small text-muted" title="photographer">Artist: {{photographer}}</h3>
+          <h3 class="small text-muted" title="nationality">Nationality: {{nationality}}</h3>
           <h3 class="small text-muted" title="type">Type: {{type}}</h3>
           <h3 class="small text-muted" title="genre">Genre: {{genre}}</h3>
         </td>
@@ -25,32 +24,32 @@
           <h3 class="small text-muted" title="textby">Text By: {{textby}}</h3>
         </td>
         <td class='main-book-cell'>
-          <h3 class="small text-muted" title="tags">{{tags}}</h3>
+          <h3 class="small text-muted" title="tags">Tags: {{tags}}</h3>
+          <h3 class="small text-muted" title="comments">Comments: {{comments}}</h3>
         </td>
-        <!--
-        <td class='main-book-cell'>
-        <h3 class="small text-muted" title="added">Added: {{created_at}}</h3>
-        <h3 class="small text-muted" title="updated">Updated: {{updated_at}}</h3>
-        <h3 class="small text-muted" title="comments">Comments: {{comments}}</h3>
-      </td>
-    -->
-    <td class='list-button-cell'>
-      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#fullListModal" data-title="{{title}}">
-        <i class="fa fa-list"></i>
+        <td class='more-info-cell'>
+          <!-- need to make dates render legibly -->
+          <h3 class="small text-muted" title="updated">Updated On: {{updated_at}}</h3>
+          <h3 class="small text-muted" title="added">Added On: {{created_at}}</h3>
+        </td>
+        <td class='list-button-cell'>
+          <button type="button" class="btn btn-default" data-toggle="modal"
+          data-target="#fullListModal" data-id="{{id}}" data-title="{{title}}">
+          <i class="fa fa-list"></i>
+        </button>
+
+        <button type="button" class="edit-button btn btn-default" href="/books/{{id}}/edit">
+          <i class="fa fa-pencil"></i>
+        </button>
+
+        <button type="button" class="btn btn-default" data-toggle="modal"
+        data-target="#deleteModal" data-id="{{id}}" data-title="{{title}}">
+        <i class="fa fa-trash"></i>
       </button>
+    </td>
 
-      <button type="button" class="edit-button btn btn-default" href="/books/{{id}}/edit">
-        <i class="fa fa-pencil"></i>
-      </button>
-
-      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#deleteModal"
-      data-id="{{id}}" data-title="{{title}}">
-      <i class="fa fa-trash"></i>
-    </button>
-  </td>
-
-</tr>
-{{/each}}
+  </tr>
+  {{/each}}
 
 </table>
 </div> <!-- panel -->
@@ -64,7 +63,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="text-danger modal-title"></h4>
+        <h4 class="modal-title text-danger"></h4>
       </div>
       <div class="modal-body">
       </div>
@@ -86,13 +85,13 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title"></h4>
+        <h4 class="modal-title text-info"></h4>
       </div>
       <div class="modal-body">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Thanks!</button>
+        {{!-- <button type="button" class="btn btn-primary">Save</button>  --}}
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
