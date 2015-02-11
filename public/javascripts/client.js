@@ -66,11 +66,11 @@ $('#fullListModal').on('show.bs.modal', function (event) {
   $(row).children('.list-button-cell').remove();
   // And turn its tr into a div full of spans
   var list = (function buildList(e) {
-    $(row).children('td')
+    $(e).children('td')
     .map(function() {
       $(this).replaceWith($("<span>" + this.innerHTML + "</span>"));
     })
-    return $(row).replaceWith($("<div>" + row.innerHTML + "</div>")).html();
+    return $(e).replaceWith($("<div>" + row.innerHTML + "</div>")).html();
   })(row);
   // insert into modal
   modal.find('.modal-title').text(title);
