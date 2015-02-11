@@ -64,16 +64,15 @@ $('#fullListModal').on('show.bs.modal', function (event) {
   // Get all of the book info
   var row = button.closest('tr').clone();
   $(row).children('.list-button-cell').remove();
-  // And turn it from a row into a div full of spans
-  function buildList(row) {
+  // And turn its tr into a div full of spans
+  var list = (function buildList(e) {
     $(row).children('td')
     .map(function() {
       $(this).replaceWith($("<span>" + this.innerHTML + "</span>"));
     })
     return $(row).replaceWith($("<div>" + row.innerHTML + "</div>")).html();
-  }; // end buildList function
-  var list = buildList(row);
-  // console.log(list);
+  })(row);
+  // insert into modal
   modal.find('.modal-title').text(title);
   modal.find('.modal-body').html(list);
 }); // end list all modal
