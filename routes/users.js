@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
+var bcrypt = require('bcrypt');
 var User = require('../models/user');
 
-router.use(bodyParser.urlencoded({ extended: true }))
+// router.use(bodyParser.urlencoded({ extended: true }))
 
 router.get('/new', function(req, res) {
   res.render('users/new');
