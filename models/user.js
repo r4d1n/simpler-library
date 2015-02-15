@@ -2,6 +2,9 @@ var knex = require('../config/database');
 var bcrypt = require('bcrypt');
 
 var userModel =  {
+  setName: function(name) {
+    this.name = name;
+  },
   setEmail: function(email) {
     this.email = email;
   },
@@ -11,6 +14,7 @@ var userModel =  {
   save: function() {
     var promise = knex('users').insert({
       email: this.email,
+      user_name: this.name,
       password: this.pwHash,
       created_at: new Date(),
       updated_at: new Date()
@@ -19,6 +23,7 @@ var userModel =  {
   },
   load: function(dbUser) {
     this.email = dbUser.email;
+    this.name = dbUser.name;
     this.id = dbUser.id;
     this.hash = dbUser.password;
   }
@@ -44,10 +49,12 @@ var User = {
         tempUser.load(users[0]);
         if (bcrypt.compareSync(password, tempUser.hash)) {
           return tempUser
-        }
+        } else {
+          throw "User Not Found";
+        };
       } else {
         throw "User Not Found";
-      }
+      };
     })
   },
   find: function(id) {

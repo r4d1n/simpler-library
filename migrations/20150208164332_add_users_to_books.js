@@ -7,5 +7,7 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-
+  return knex.schema.table('books', function(table) {
+    table.dropColumn('user_id');
+  });
 };

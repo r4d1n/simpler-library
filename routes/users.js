@@ -11,19 +11,27 @@ router.get('/new', function(req, res) {
 });
 
 router.post('/new', function(req, res) {
+  var username = req.body.user.name;
   var email = req.body.user.email;
   var password = req.body.user.password;
   var conf = req.body.user.confirmation;
   console.log(email, password);
-  if (password === conf) {
-    var tempUser = User.create();
-    tempUser.setEmail(email);
-    tempUser.setPassword(password);
-    tempUser.save().then(function() {
-      res.redirect('/');
-    });
-  } else {
-    throw "Passwords Do Not Match"
+  try{
+    if (password === conf) {
+      var tempUser = User.create();
+      tempUser.setName(username);
+      tempUser.setEmail(email);
+      tempUser.setPassword(password);
+      tempUser.save().then(function() {
+        res.redirect('/');
+      });
+    } else {
+      throw "Passwords Do Not Match";
+    }
+  } catch(error) {
+    res.render('users/new', {
+      errorMessages: [error]
+    })
   }
 });
 
