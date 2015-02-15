@@ -1,7 +1,7 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
 var session = require('express-session');
-// var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt');
 
 var app = express();
@@ -17,7 +17,8 @@ var User = require('./models/user');
 app.use(session({
   secret: ';askjfi[pojas;lkva;lksjvlkajdsv;lkjas;lkva',
   saveUninitialized: true,
-  resave: true }));
+  resave: false }
+))
 
 app.use(function(req, res, next) {
   User.find(req.session.userId)
