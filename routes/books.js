@@ -24,13 +24,15 @@ router.get('/new', function (req, res) {
 router.get('/show', function (req, res) {
   knex.select().table('books')
   .then(function(books) {
-    var context = { 'books' : books };
-    if(req.currentUser) {
+    if(!req.currentUser) {
+      res.redirect('../users/login')
+    } else {
+      var context = { 'books' : books };
       context.currentUser = req.currentUser;
       console.log("The current user is: " + context.currentUser.name);
-    }
       console.log("There are " + context.books.length + " books")
-    res.render('books/show', context);
+      res.render('books/show', context);
+    }
   })
 })
 
