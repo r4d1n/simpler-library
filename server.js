@@ -37,6 +37,7 @@ app.use('/', routes);
 app.use('/books', books);
 app.use('/users', users);
 
+app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public'));
 
 // to support URL-encoded bodies
