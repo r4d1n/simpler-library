@@ -49,9 +49,15 @@ table {
 
 /*End CSS Reset*/
 
+/* Begin general stuff */
+
 body {
   padding-top : 70px;
   font-family: 'Titillium Web', sans-serif;
+}
+
+p {
+  padding: 15px 0px;
 }
 
 .center-main-div {
@@ -63,6 +69,13 @@ body {
 span h3 {
   padding: 5px 0px;
 }
+
+input {
+  display: inline-block;
+  border-radius: 5px;
+}
+
+/* End general stuff */
 
 /* Begin nav bar */
 #top-nav li {
@@ -85,10 +98,6 @@ span h3 {
   height: auto;
 }
 
-input {
-  display: inline-block;
-  border-radius: 5px;
-}
 
 .book-field {
   width: 30em;
@@ -104,19 +113,25 @@ input {
 /* Begin User Form */
 .user-form {
   position: absolute;
-  top: 50%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
 }
 
 .user-form-btn {
-  margin-left: 30%;
-  margin-right: 20%;
+  /*margin-left: 30%;
+  margin-right: 20%;*/
+  float: right;
+  width: 15em;
+  padding-right: 5px;
+}
+
+.user-form .form-group input {
+  width: 15em;
 }
 /* End User Form */
 
