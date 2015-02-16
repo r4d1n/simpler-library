@@ -8,7 +8,7 @@ router.use(bodyParser.urlencoded({ extended: true }))
 
 router.get('/new', function(req, res) {
   if (req.currentUser) {
-  res.render('users/new', { 'currentUser': req.currentUser });
+    res.render('users/new', { 'currentUser': req.currentUser });
   }
 });
 
@@ -19,7 +19,11 @@ router.post('/new', function(req, res) {
   var conf = req.body.user.confirmation;
   console.log(email, password);
   try{
-    if (password === conf) {
+    if (username.length < 5) {
+      throw "Username is too short";
+    } else if (password.length < 6) {
+      throw "Password must contain at least 6 characters"
+    } else if (password === conf) {
       var tempUser = User.create();
       tempUser.setName(username);
       tempUser.setEmail(email);
