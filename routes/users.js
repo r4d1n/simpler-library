@@ -7,7 +7,9 @@ var User = require('../models/user');
 router.use(bodyParser.urlencoded({ extended: true }))
 
 router.get('/new', function(req, res) {
-  res.render('users/new');
+  if (req.currentUser) {
+  res.render('users/new', { 'currentUser': req.currentUser });
+  }
 });
 
 router.post('/new', function(req, res) {
@@ -48,18 +50,18 @@ router.post('/login', function(req,res) {
     console.log(currentUser);
     req.session.userId = currentUser.id;
     console.log('successful login');
-    res.redirect('/books/new');
+    res.redirect('/');
   }).catch(function(error) {
     console.log("There was an error: " + error);
     res.render('users/login', {
-      errorMessages: [error]
+      errorMessages: ["User Not Found"]
     });
   });
 });
 
 router.get('/logout', function(req,res) {
   req.session.destroy(function(error) {
-    res.redirect('/')
+    res.redirect('/');
   });
 });
 

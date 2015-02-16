@@ -23,7 +23,7 @@ var userModel =  {
   },
   load: function(dbUser) {
     this.email = dbUser.email;
-    this.name = dbUser.name;
+    this.name = dbUser.user_name;
     this.id = dbUser.id;
     this.hash = dbUser.password;
   }
@@ -34,9 +34,6 @@ var User = {
     return Object.create(userModel);
   },
   login: function(email, password) {
-    // if (email === undefined || email === "") {
-    //   throw "Must provide email";
-    // }
     return knex('users')
     .where({
       email: email,
@@ -44,17 +41,21 @@ var User = {
     .then(function(users) {
       console.log(users);
       // there should only be one because emails are unique
-      if (users.length === 1) {
-        var tempUser = User.create();
-        tempUser.load(users[0]);
-        if (bcrypt.compareSync(password, tempUser.hash)) {
-          return tempUser
+      try {
+        if (users.length === 1) {
+          var tempUser = User.create();
+          tempUser.load(users[0]);
+          if (bcrypt.compareSync(password, tempUser.hash)) {
+            return tempUser;
+          } else {
+            throw "User Not Found";
+          };
         } else {
           throw "User Not Found";
         };
-      } else {
-        throw "User Not Found";
-      };
+      } catch (error) {
+        console.log(error);
+      }
     })
   },
   find: function(id) {

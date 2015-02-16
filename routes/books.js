@@ -15,7 +15,7 @@ router.get('/debug', function(req, res) {
 
 router.get('/new', function (req, res) {
   if(req.currentUser){
-    res.render('books/new');
+    res.render('books/new', { 'currentUser' : req.currentUser });
   } else {
     res.redirect('../users/login');
   }
@@ -24,7 +24,13 @@ router.get('/new', function (req, res) {
 router.get('/show', function (req, res) {
   knex.select().table('books')
   .then(function(books) {
-    res.render('books/show', { 'books' : books });
+    var context = { 'books' : books };
+    if(req.currentUser) {
+      context.currentUser = req.currentUser;
+      console.log("The current user is: " + context.currentUser.name);
+    }
+      console.log("There are " + context.books.length + " books")
+    res.render('books/show', context);
   })
 })
 

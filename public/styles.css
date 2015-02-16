@@ -55,6 +55,7 @@ body {
 }
 
 .center-main-div {
+  position: relative;
   right : 10%;
   left : 10%;
 }
@@ -69,9 +70,10 @@ span h3 {
   padding : 10px;
 }
 
+
 /* End nav bar */
 
-/* Begin entry form, mainly to clean up spacing */
+/* Begin book entry form, mainly to clean up spacing */
 
 .form-left {
   display: inline-block;
@@ -83,18 +85,41 @@ span h3 {
   height: auto;
 }
 
-.book-field {
+input {
   display: inline-block;
-  width: 30em;
   border-radius: 5px;
 }
 
+.book-field {
+  width: 30em;
+}
+
 .submit-button-div {
-  margin-right : 20%;
-  margin-left : 20%;
+  margin-right : 10%;
+  margin-left : 10%;
 }
 
 /* End entry form */
+
+/* Begin User Form */
+.user-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.user-form-btn {
+  margin-left: 30%;
+  margin-right: 20%;
+}
+/* End User Form */
+
 
 /* Begin collection list table */
 table {
@@ -120,7 +145,5 @@ tr {
 .list-button-cell {
   width: auto;
 }
-
-
 
 /* End list table */

@@ -19,16 +19,16 @@
           <li id="form-view-switch"><a href="/books/new">Add Books</a></li>
           <li id="list-view-switch"><a href="/books/show">Browse Library</a></li>
         </ul>
+      </div>
         <ul class="nav navbar-nav pull-right">
           {{#if currentUser}}
-          <li>{{currentUser.email}}</li>
+          <li><a href="#">Logged In As: {{currentUser.name}}</a></li>
+          <li><a href="/users/new">Add User</a></li>
           <li><a href="/users/logout">Log Out</a></li>
           {{else}}
-          <li><a href="/users/new">Create User</a></li>
           <li><a href="/users/login">Log In</a></li>
           {{/if}}
         </ul>
-      </div>
     </div>
   </nav>
   {{#if errorMessages}}

@@ -37,17 +37,14 @@
           data-target="#fullListModal" data-id="{{id}}" data-title="{{title}}">
           <i class="fa fa-list"></i>
         </button>
-
         <button type="button" class="edit-button btn btn-default" href="/books/{{id}}/edit">
           <i class="fa fa-pencil"></i>
         </button>
-
         <button type="button" class="btn btn-default" data-toggle="modal"
         data-target="#deleteModal" data-id="{{id}}" data-title="{{title}}">
         <i class="fa fa-trash"></i>
       </button>
     </td>
-
   </tr>
   {{/each}}
 
@@ -68,10 +65,8 @@
       <div class="modal-body">
       </div>
       <div class="modal-footer">
-        <!-- <form action="/books/{{this.id}}/delete" method="POST" class="btn delete-button"> -->
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-danger delete-button">Delete</button>
-        <!-- </form> -->
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

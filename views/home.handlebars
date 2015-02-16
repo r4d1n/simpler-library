@@ -1,7 +1,11 @@
 <div class='container center-main'>
-<h1>Welcome to SimpLib</h1>
-<p>
-  <a href='/users/login'>Log In</a> or
-  <a href='/books/show'>Browse Our Library</a>
-</p>
+  <h1>Welcome to SimpLib</h1>
+  <p>
+    {{#if currentUser}}
+    <a href='/books/new'>Add Books</a>
+    {{else}}
+    <a href='/users/login'>Log In</a>
+    {{/if}}
+    or <a href='/books/show'>Browse Our Library</a>
+  </p>
 </div>

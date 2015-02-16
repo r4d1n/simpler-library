@@ -1,13 +1,17 @@
-<form method="post" action="/users/login">
-  <div class="form-group">
-    <label class="form-left" for="user-email">Email</label>
-    <input id="user-email" name="user[email]" value="" placeholder="user@example.com">
-    <br>
-  </div>
-  <div class="form-group">
-    <label class="form-left" for="user-password">Password</label>
-    <input id="user-password" name="user[password]" value="" type="password">
-    <br>
-  </div>
-  <button type="submit" class="btn">Login</button>
-</form>
+<div class="container center-main">
+  <form class="user-form" method="post" action="/users/login">
+    <div class="form-group">
+      <label class="form-left" for="user-email">Email</label>
+      <input id="user-email" name="user[email]" value="" placeholder="user@example.com">
+      <br>
+    </div>
+    <div class="form-group">
+      <label class="form-left" for="user-password">Password</label>
+      <input id="user-password" name="user[password]" value="" type="password">
+      <br>
+    </div>
+    <div class="form-group user-form-btn">
+      <button type="submit" class="btn btn-default btn-lg btn-block">Login</button>
+    </div>
+  </form>
+</div>
