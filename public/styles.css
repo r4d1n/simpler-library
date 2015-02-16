@@ -90,7 +90,7 @@ input {
 
 .form-left {
   display: inline-block;
-  width: 10em;
+  width: 5em;
   vertical-align: top;
   text-align: right;
   margin-right: 15px;
@@ -98,14 +98,13 @@ input {
   height: auto;
 }
 
-
 .book-field {
   width: 60%;
 }
 
 .submit-button-div {
-  margin-right : 10%;
-  margin-left : 10%;
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
 /* End entry form */
@@ -145,7 +144,6 @@ table {
 td {
   max-width: .5em;
   overflow: hidden;
-  vertical-align: middle;
 }
 
 td.main-book-cell {
@@ -153,12 +151,13 @@ td.main-book-cell {
   width: 27%;
 }
 
-tr {
-  height: 10px;
-}
+/*tr {
+  height: auto;
+}*/
 
 .list-button-cell {
   width: auto;
+  vertical-align: middle!important;
 }
 
 /* End list table */
