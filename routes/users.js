@@ -7,9 +7,9 @@ var User = require('../models/user');
 router.use(bodyParser.urlencoded({ extended: true }))
 
 router.get('/new', function(req, res) {
-  if (req.currentUser) {
+  // if (req.currentUser) { // need this available without login for dev
     res.render('users/new', { 'currentUser': req.currentUser });
-  }
+  // }
 });
 
 router.post('/new', function(req, res) {
@@ -19,8 +19,8 @@ router.post('/new', function(req, res) {
   var conf = req.body.user.confirmation;
   console.log(email, password);
   try{
-    if (username.length < 5) {
-      throw "Username is too short";
+    if (username.length < 1) {
+      throw "Please Enter a Username";
     } else if (password.length < 6) {
       throw "Password must contain at least 6 characters"
     } else if (password === conf) {

@@ -37,23 +37,6 @@ $(document).ready(function() {
 }); // end document ready
 
 // Library list modals
-$('#deleteModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget); // Button that triggered the modal
-  var modal = $(this);
-  // Extract info from data-* attributes
-  var title = button.data('title');
-  var id = button.data('id');
-  // Write into modal
-  modal.find('.modal-title').text('Delete ' + title);
-  modal.find('.modal-body').text('Are you sure you want to remove ' + title + ' from the library?');
-  // Delete a book
-  $('.delete-button').click(function() {
-    $.post('/books/' + id + '/delete/', function(res) {
-      window.location.reload();
-    })
-    return false;
-  }); // end delete button
-}); // end delete modal
 
 $('#fullListModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
@@ -77,33 +60,41 @@ $('#fullListModal').on('show.bs.modal', function (event) {
   modal.find('.modal-body').html(row);
 }); // end list all modal
 
+$('#deleteModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget); // Button that triggered the modal
+  var modal = $(this);
+  // Extract info from data-* attributes
+  var title = button.data('title');
+  var id = button.data('id');
+  // Write into modal
+  modal.find('.modal-title').text('Delete ' + title);
+  modal.find('.modal-body').text('Are you sure you want to remove ' + title + ' from the library?');
+  // Delete a book
+  $('.delete-button').click(function() {
+    $.post('/books/' + id + '/delete/', function(res) {
+      window.location.reload();
+    })
+    return false;
+  }); // end delete button
+}); // end delete modal
+
 $('#editModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
   var modal = $(this);
   // Extract info from data-* attributes
   var title = button.data('title');
   var id = button.data('id');
-  // Get all of the book info
-  var row = button.closest('tr').clone();
-  $(row).children('.list-button-cell').remove();
-  // And turn the tr into a form
-  (function buildForm() {
-    $(row).children('td')
-    .map(function() {
-      var form = $("<form />").attr("method", "post").attr("action", "/books/{{book.id}}")
-      $(this).children('h3').map(function(){
-        var attName = $(this).attr('title');
-        var label = $("<label />").attr("for", "book-" + attName).text(attName);
-        var value = this.innerHTML.substr(this.innerHTML.lastIndexOf(":") + 1);
-        var input = $("<input />").attr("name", "book[" + attName + "]").attr("value", value);
-        var formGroup = $("<div />").attr("class", "form-group").append(label).append(input);
-        form.append(formGroup);
-      })
-      $(this).replaceWith(form);
+  $.get('/books/' + id + '/edit', function(res) {
+    modal.find('.modal-title').text(title);
+    modal.find('.modal-body').html(res);
+  })
+  $('.edit-button').click(function() {
+    var data = $('#edit-book-form').serialize();
+    $.post('/books/' + id, data)
+    .then(function(res) {
+      console.log('Edit saved');
+      window.location.reload();
     })
-    return $(row).replaceWith($("<div>" + row.innerHTML + "</div>")).html();
-  })();
-  // insert into modal
-  modal.find('.modal-title').text(title);
-  modal.find('.modal-body').html(row);
+    return false;
+  }); // end edit button
 }); // end edit modal
