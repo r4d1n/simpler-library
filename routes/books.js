@@ -82,17 +82,17 @@ router.post('/:id', function(req, res) {
   })
 })
 
-router.get('/:id/edit', function (req, res) {
-  // fetch book via id and pass to render
-  knex('books').where('id', req.params.id)
-  .then(function(result) {
-    var book = result[0];
-    res.render('books/edit', {
-      book : book,
-      layout: false
-    });
-  });
-})
+// router.get('/:id/edit', function (req, res) {
+//   // fetch book via id and pass to render
+//   knex('books').where('id', req.params.id)
+//   .then(function(result) {
+//     var book = result[0];
+//     res.render('books/edit', {
+//       book : book,
+//       layout: false
+//     });
+//   });
+// })
 
 router.post('/:id/delete', function(req, res) {
   knex('books')

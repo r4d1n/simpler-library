@@ -27,27 +27,28 @@
           <h3 class="small text-muted" title="tags">Tags: {{tags}}</h3>
           <h3 class="small text-muted" title="comments">Comments: {{comments}}</h3>
         </td>
-        <!--
-        <td class='more-info-cell'>
-          <h3 class="small text-muted" title="updated">Updated On: {{updated_at}}</h3>
-          <h3 class="small text-muted" title="added">Added On: {{created_at}}</h3>
-        </td>
-      -->
-        <td class='list-button-cell'>
-          <button type="button" class="btn btn-default" data-toggle="modal"
-          data-target="#fullListModal" data-id="{{id}}" data-title="{{title}}">
-          <i class="fa fa-list"></i>
-        </button>
-        <button type="button" class="edit-button btn btn-default" href="/books/{{id}}/edit">
-          <i class="fa fa-pencil"></i>
-        </button>
-        <button type="button" class="btn btn-default" data-toggle="modal"
-        data-target="#deleteModal" data-id="{{id}}" data-title="{{title}}">
-        <i class="fa fa-trash"></i>
-      </button>
-    </td>
-  </tr>
-  {{/each}}
+
+        <td class='more-info-cell'> <!-- Hidden on load, shows in modals -->
+        <h3 class="small text-muted" title="updated">Updated On: {{updated_at}}</h3>
+        <h3 class="small text-muted" title="added">Added On: {{created_at}}</h3>
+      </td>
+
+    <td class='list-button-cell'>
+      <button type="button" class="btn btn-default" data-toggle="modal"
+      data-target="#fullListModal" data-id="{{id}}" data-title="{{title}}">
+      <i class="fa fa-list"></i>
+    </button>
+    <button type="button" class="btn btn-default" data-toggle="modal"
+    data-target="#editModal" data-id="{{id}}" data-title="{{title}}">
+    <i class="fa fa-pencil"></i>
+  </button>
+  <button type="button" class="btn btn-default" data-toggle="modal"
+  data-target="#deleteModal" data-id="{{id}}" data-title="{{title}}">
+  <i class="fa fa-trash"></i>
+</button>
+</td>
+</tr>
+{{/each}}
 
 </table>
 </div> <!-- panel -->
@@ -88,6 +89,26 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Thanks!</button>
         {{!-- <button type="button" class="btn btn-primary">Save</button>  --}}
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- edit modal -->
+<div class="modal" id="editModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-primary"></h4>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
