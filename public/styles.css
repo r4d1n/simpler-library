@@ -56,7 +56,7 @@ body {
   font-family: 'Titillium Web', sans-serif;
 }
 
-p {
+p.home-text{
   padding: 15px 0px;
 }
 
@@ -81,6 +81,10 @@ input {
 #top-nav li {
   list-style-type : none;
   padding : 10px;
+}
+
+nav p {
+  padding-left: 15px;
 }
 
 
