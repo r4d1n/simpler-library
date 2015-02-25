@@ -48,7 +48,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="modal-title text-primary"></h4>
-      </div> 
+      </div>
       <!-- <form class="book-edit-form" method="POST" action="/books/{{book.id}}"> -->
         <div class="modal-body">
         </div>
@@ -61,7 +61,19 @@
   </div><!-- /.modal-dialog -->
 </div><!-- / edit modal -->
 
+<form action="/books/show" method="GET">
+  <input name="q" />
+  <button>Search</button>
+</form>
+
+<p>
+Sort by: <a href="/books/show?sort=title">Title</a><a href="/books/show?sort=photographer">Photographer</a>
+</p>
+
 <div class='container center-main'>
+    {{#if searchQuery}}
+    <h3>Your search results for {{searchQuery}}:</h3>
+    {{/if}}
   <div class='panel panel-default'>
     <table id="library" class="table table-striped">
       <tr>

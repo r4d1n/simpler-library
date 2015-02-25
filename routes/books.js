@@ -22,17 +22,25 @@ router.get('/new', function (req, res) {
 })
 
 router.get('/show', function (req, res) {
-  knex.select().table('books')
+  var context = { currentUser : req.currentuser };
+  if (req.query.q) {
+    context.searchQuery = req.query.q;
+  }
+  booksIndex(req.query.q, req.query.sort)
   .then(function(books) {
-    if(!req.currentUser) {
-      res.redirect('../users/login')
-    } else {
-      var context = { 'books' : books };
-      context.currentUser = req.currentUser;
-      console.log("The current user is: " + context.currentUser.name);
-      console.log("There are " + context.books.length + " books")
-      res.render('books/show', context);
+    // if(!req.currentUser) { //commented out for dev purposes
+    //   res.redirect('../users/login')
+    // } else {
+    for (var i = 0; i < books.length; i++) {
+      books[i].created_at = convertDate(books[i].created_at);
+      books[i].updated_at = convertDate(books[i].updated_at);
     }
+    context.books = books;
+    res.render('books/show', context);
+    // } // else
+  }).catch(function(err){
+    console.log("There was an error", err);
+    res.redirect('/');
   })
 })
 
@@ -110,5 +118,19 @@ router.post('/:id/delete', function(req, res) {
   })
 })
 
+function convertDate(integer) {
+  var date = new Date();
+  date.setTime(integer);
+  return date;
+}
+
+function booksIndex(query, sortColumn) {
+  sortColumn = sortColumn || "id";
+  if (query) {
+    return knex('books').where('tags', 'like', "%" + knex.raw(query) + "%").orderBy(sortColumn, "desc")
+  } else {
+    return knex.select().table('books').orderBy(sortColumn, "desc");
+  }
+}
 
 module.exports = router;
