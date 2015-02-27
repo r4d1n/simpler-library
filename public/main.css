@@ -67,12 +67,18 @@ input {
 
 /* End general stuff */
 /* Begin nav bar */
-#top-nav li {
+nav #top-nav li {
   list-style-type: none;
   padding: 10px; }
-
-nav p {
-  padding-left: 15px; }
+nav #cog-menu {
+  height: 50px;
+  margin: 0px; }
+  nav #cog-menu li {
+    height: inherit; }
+  nav #cog-menu .btn-group {
+    margin: 25% 0px; }
+    nav #cog-menu .btn-group .btn {
+      padding: 6px 8px; }
 
 /* End nav bar */
 /* Begin book entry form, mainly to clean up spacing */
@@ -129,7 +135,7 @@ td.main-book-cell {
   width: 27%; }
 
 /*tr {
-  height: auto;
+height: auto;
 }*/
 .list-button-cell {
   width: auto;

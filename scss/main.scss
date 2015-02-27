@@ -29,17 +29,27 @@ input {
 /* End general stuff */
 
 /* Begin nav bar */
-#top-nav li {
-  list-style-type : none;
-  padding : 10px;
-}
+nav {
 
-nav p {
-  padding-left: 15px;
-}
+  #top-nav li {
+    list-style-type : none;
+    padding : 10px;
+  }
 
-button .cog-btn {
-
+  #cog-menu {
+    height: 50px;
+    margin: 0px;
+    // padding-right: 15px;
+    li {
+      height: inherit;
+    }
+    .btn-group {
+      margin: 25% 0px;
+      .btn {
+        padding: 6px 8px;
+      }
+    }
+  }
 }
 
 /* End nav bar */
@@ -110,7 +120,7 @@ td.main-book-cell {
 }
 
 /*tr {
-  height: auto;
+height: auto;
 }*/
 
 .list-button-cell {

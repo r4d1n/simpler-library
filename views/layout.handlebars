@@ -26,21 +26,27 @@
       <ul class="nav navbar-nav">
         <li id="form-view-switch"><a href="/books/new">Add Books</a></li>
         <li id="list-view-switch"><a href="/books/show">Browse Library</a></li>
-      </ul>
-      <div class="btn-group navbar-right"> <!-- nav navbar-nav ? -->
-        <button type="button" class="btn btn-default dropdown-toggle cog-btn" data-toggle="dropdown" aria-expanded="false">
-          <span class="fa fa-cog"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          {{#if currentUser}}
-        <li><p class="navbar-text navbar-right">Logged In As: {{currentUser.name}}</p></li>
-          <li><a href="/users/new">Add User</a></li>
-          <li><a href="/users/logout">Log Out</a></li>
-          {{else}}
-          <li><a href="/users/login">Log In</a></li>
-          {{/if}}
-        </ul>
-      </div> <!-- btn-group -->
+      </ul> <!-- main menu list -->
+      <ul class="nav navbar-nav navbar-right" id="cog-menu">
+        {{#if currentUser}}
+        <li><p class="navbar-text">Logged In As: {{currentUser.name}}</p></li>
+        {{/if}}
+        <li>
+          <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span class="fa fa-cog fa-lg"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              {{#if currentUser}}
+              <li><a href="/users/new">Add User</a></li>
+              <li><a href="/users/logout">Log Out</a></li>
+              {{else}}
+              <li><a href="/users/login">Log In</a></li>
+              {{/if}}
+            </ul> <!-- dropdown menu -->
+          </div> <!-- btn-group -->
+        </li>
+      </ul> <!-- right -->
     </div> <!-- navbar collapse -->
   </div> <!-- navbar container -->
 </nav>
