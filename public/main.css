@@ -2,7 +2,6 @@
 v2.0 | 20110126
 License: none (public domain)
 */
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,77 +20,62 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline;
-}
+  vertical-align: baseline; }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block;
-}
+  display: block; }
+
 body {
-  line-height: 1;
-}
+  line-height: 1; }
+
 ol, ul {
-  list-style: none;
-}
+  list-style: none; }
+
 blockquote, q {
-  quotes: none;
-}
+  quotes: none; }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: '';
-  content: none;
-}
+  content: none; }
+
 table {
   border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/*End CSS Reset*/
+  border-spacing: 0; }
 
 /* Begin general stuff */
-
 body {
-  padding-top : 70px;
-  font-family: 'Titillium Web', sans-serif;
-}
+  padding-top: 70px;
+  font-family: 'Titillium Web', sans-serif; }
 
-p.home-text{
-  padding: 15px 0px;
-}
+p.home-text {
+  padding: 15px 0px; }
 
 .center-main-div {
   position: relative;
-  right : 10%;
-  left : 10%;
-}
+  right: 10%;
+  left: 10%; }
 
 span h3 {
-  padding: 5px 0px;
-}
+  padding: 5px 0px; }
 
 input {
   display: inline-block;
-  border-radius: 5px;
-}
+  border-radius: 5px; }
 
 /* End general stuff */
-
 /* Begin nav bar */
 #top-nav li {
-  list-style-type : none;
-  padding : 10px;
-}
+  list-style-type: none;
+  padding: 10px; }
 
 nav p {
-  padding-left: 15px;
-}
-
+  padding-left: 15px; }
 
 /* End nav bar */
-
 /* Begin book entry form, mainly to clean up spacing */
-
 .form-left {
   display: inline-block;
   width: 5em;
@@ -99,20 +83,16 @@ nav p {
   text-align: right;
   margin-right: 15px;
   font-weight: bold;
-  height: auto;
-}
+  height: auto; }
 
 .book-field {
-  width: 60%;
-}
+  width: 60%; }
 
 .submit-button-div {
   margin-right: 10%;
-  margin-left: 10%;
-}
+  margin-left: 10%; }
 
 /* End entry form */
-
 /* Begin User Form */
 .user-form {
   position: absolute;
@@ -122,46 +102,39 @@ nav p {
   -webkit-transform: translate(-50%);
   -moz-transform: translate(-50%);
   -ms-transform: translate(-50%);
-  -o-transform: translate(-50%);
-}
+  -o-transform: translate(-50%); }
 
 .user-form-btn {
   /*margin-left: 30%;
   margin-right: 20%;*/
   float: right;
   width: 15em;
-  padding-right: 5px;
-}
+  padding-right: 5px; }
 
 .user-form .form-group input {
-  width: 15em;
-}
+  width: 15em; }
+
 /* End User Form */
-
-
 /* Begin collection list table */
 table {
   text-align: center;
-  /*border-collapse: collapse;*/
-}
+  /*border-collapse: collapse;*/ }
 
 td {
   max-width: .5em;
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 td.main-book-cell {
   text-align: left;
-  width: 27%;
-}
+  width: 27%; }
 
 /*tr {
   height: auto;
 }*/
-
 .list-button-cell {
   width: auto;
-  vertical-align: middle!important;
-}
+  vertical-align: middle !important; }
 
 /* End list table */
+
+/*# sourceMappingURL=main.css.map */
