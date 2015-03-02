@@ -1,17 +1,21 @@
 var express = require('express');
+var path = require('path');
 var exphbs = require('express-handlebars');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt');
+var lessMiddleware = require('less-middleware')
 
 var app = express();
 
-// require routes
+// routes
 var routes = require('./routes/index');
 var books = require('./routes/books');
 var users = require('./routes/users');
 
+// models
 var User = require('./models/user');
+
 
 // user session middleware
 app.use(session({
@@ -36,21 +40,23 @@ app.use(function(req, res, next) {
 app.use('/', routes);
 app.use('/books', books);
 app.use('/users', users);
-// set up less to compile from its own path into public
-// also include bootstrap source
-var bootstrapPath = path.join(__dirname, 'bower_components', 'bootstrap');
-app.use(require('less-middleware')('/less', {
-  dest: '/css',
-  pathRoot: path.join(__dirname, 'public')
-  parser: {
-    paths: [path.join(bootstrapPath, 'less')],
-  }
-}));
-app.use('/bower_components', express.static(__dirname + '/bower_components'));
+
+// set up less, also include bootstrap source
+// var bootstrapPath = path.join(__dirname, 'bower_components', 'bootstrap');
+// app.use('/img', express.static(path.join(bootstrapPath, 'img')));
+// app.use(lessMiddleware(path.join(__dirname, 'source', 'less'), {
+//   dest: path.join(__dirname, 'public'),
+//   parser: {
+//     paths: [path.join(bootstrapPath, 'less')],
+//   }
+// }
+// ));
+
 app.use(express.static(__dirname + '/public'));
+app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
 // to support URL-encoded bodies
-// app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(express.methodOverride());
 
 // instantiate handlebars-express engine with config
