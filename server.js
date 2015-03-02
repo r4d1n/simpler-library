@@ -36,7 +36,16 @@ app.use(function(req, res, next) {
 app.use('/', routes);
 app.use('/books', books);
 app.use('/users', users);
-
+// set up less to compile from its own path into public
+// also include bootstrap source
+var bootstrapPath = path.join(__dirname, 'bower_components', 'bootstrap');
+app.use(require('less-middleware')('/less', {
+  dest: '/css',
+  pathRoot: path.join(__dirname, 'public')
+  parser: {
+    paths: [path.join(bootstrapPath, 'less')],
+  }
+}));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/public'));
 
