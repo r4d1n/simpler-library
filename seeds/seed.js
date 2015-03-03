@@ -16,7 +16,8 @@ exports.seed = function(knex, Promise) {
     comments : "What an interesting show.",
     signed : false,
     created_at: new Date(),
-    updated_at: new Date()
+    updated_at: new Date(),
+    user_id: 7
   },
 {
   title: "Protest Photographs",
@@ -32,7 +33,8 @@ exports.seed = function(knex, Promise) {
   comments : "",
   signed : false,
   created_at: new Date(),
-  updated_at: new Date()
+  updated_at: new Date(),
+  user_id: 7
 },
 {
   title : "Incidents",
@@ -48,7 +50,8 @@ exports.seed = function(knex, Promise) {
   comments : "Has a sense of humor",
   signed : true,
   created_at: new Date(),
-  updated_at: new Date()
+  updated_at: new Date(),
+  user_id: 7
 },
 ])
 }

@@ -1,0 +1,132 @@
+@import "reset";
+@import "bower_components/bootstrap/less/bootstrap";
+
+/* Begin general stuff */
+
+body {
+  padding-top: 70px;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+p.home-text{
+  padding: 15px 0px;
+}
+
+.center-main-div {
+  position: relative;
+  right : 10%;
+  left : 10%;
+}
+
+span h3 {
+  padding: 5px 0px;
+}
+
+input {
+  display: inline-block;
+  border-radius: 5px;
+}
+
+/* End general stuff */
+
+/* Begin nav bar */
+nav {
+
+  #top-nav li {
+    list-style-type : none;
+    padding : 10px;
+  }
+
+  #cog-menu {
+    height: 50px;
+    margin: 0px;
+    // padding-right: 15px;
+    li {
+      height: inherit;
+    }
+    .btn-group {
+      margin: 25% 0px;
+      .btn {
+        padding: 6px 8px;
+      }
+    }
+  }
+}
+
+/* End nav bar */
+
+/* Begin book entry form, mainly to clean up spacing */
+
+.form-left {
+  display: inline-block;
+  width: 5em;
+  vertical-align: top;
+  text-align: right;
+  margin-right: 15px;
+  font-weight: bold;
+  height: auto;
+}
+
+.book-field {
+  width: 60%;
+}
+
+.submit-button-div {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+/* End entry form */
+
+/* Begin User Form */
+.user-form {
+  position: absolute;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+}
+
+.user-form-btn {
+  /*margin-left: 30%;
+  margin-right: 20%;*/
+  float: right;
+  width: 15em;
+  padding-right: 5px;
+}
+
+.user-form .form-group input {
+  width: 15em;
+}
+/* End User Form */
+
+
+/* Begin collection list table */
+table {
+  text-align: center;
+  /*border-collapse: collapse;*/
+}
+
+td {
+  max-width: .5em;
+  overflow: hidden;
+}
+
+td.main-book-cell {
+  text-align: left;
+  width: 27%;
+}
+
+/*tr {
+height: auto;
+}*/
+
+.list-button-cell {
+  width: auto;
+  vertical-align: middle!important;
+}
+
+/* End list table */

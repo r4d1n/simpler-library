@@ -36,6 +36,7 @@ router.get('/show', function (req, res) {
       books[i].updated_at = convertDate(books[i].updated_at);
     }
     context.books = books;
+    console.log(context.books);
     res.render('books/show', context);
     // } // else
   }).catch(function(err){
@@ -129,7 +130,10 @@ function booksIndex(query, sortColumn) {
   if (query) {
     return knex('books').where('tags', 'like', "%" + knex.raw(query) + "%").orderBy(sortColumn, "desc")
   } else {
-    return knex.select().table('books').orderBy(sortColumn, "desc");
+    return knex('books')
+    .join('users', 'books.user_id', 'users.id')
+    .orderBy(sortColumn, "desc")
+    .select('books.*', 'users.user_name');
   }
 }
 

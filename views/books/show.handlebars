@@ -72,14 +72,14 @@ Sort by: <a href="/books/show?sort=title">Title</a><a href="/books/show?sort=pho
 
 <div class='container center-main'>
     {{#if searchQuery}}
-    <h3>Your search results for {{searchQuery}}:</h3>
+    <p>Your search results for {{searchQuery}}:</p>
     {{/if}}
   <div class='panel panel-default'>
     <table id="library" class="table table-striped">
       <tr>
-        <th><h3>Primary Data</h3></th>
-        <th><h3>Publication Info</h3></th>
-        <th><h3>More Info</h3></th>
+        <th>Primary Data</th>
+        <th>Publication Info</th>
+        <th>More Info</th>
         <th></th> <!-- Above the buttons -->
       </tr>
 
@@ -87,25 +87,26 @@ Sort by: <a href="/books/show?sort=title">Title</a><a href="/books/show?sort=pho
       <tr>
         <td class='main-book-cell'>
           <h3 class="att-title" title="title">{{title}}</h3>
-          <h3 class="small text-muted" title="photographer">Artist: {{photographer}}</h3>
-          <h3 class="small text-muted" title="nationality">Nationality: {{nationality}}</h3>
-          <h3 class="small text-muted" title="type">Type: {{type}}</h3>
-          <h3 class="small text-muted" title="genre">Genre: {{genre}}</h3>
+          <p class="small text-muted" title="photographer">Artist: {{photographer}}</p>
+          <p class="small text-muted" title="nationality">Nationality: {{nationality}}</p>
+          <p class="small text-muted" title="type">Type: {{type}}</p>
+          <p class="small text-muted" title="genre">Genre: {{genre}}</p>
         </td>
         <td class='main-book-cell'>
-          <h3 class="small text-muted" title="year">Year: {{year}}</h3>
-          <h3 class="small text-muted" title="publisher">By: {{publisher}}</h3>
-          <h3 class="small text-muted" title="isbn">ISBN: {{isbn}}</h3>
-          <h3 class="small text-muted" title="textby">Text By: {{textby}}</h3>
+          <p class="small text-muted" title="year">Year: {{year}}</p>
+          <p class="small text-muted" title="publisher">By: {{publisher}}</p>
+          <p class="small text-muted" title="isbn">ISBN: {{isbn}}</p>
+          <p class="small text-muted" title="textby">Text By: {{textby}}</p>
         </td>
         <td class='main-book-cell'>
-          <h3 class="small text-muted" title="tags">Tags: {{tags}}</h3>
-          <h3 class="small text-muted" title="comments">Comments: {{comments}}</h3>
+          <p class="small text-muted" title="tags">Tags: {{tags}}</p>
+          <p class="small text-muted" title="comments">Comments: {{comments}}</p>
         </td>
 
         <td class='more-info-cell'> <!-- Hidden on load, shows in modals -->
-          <h3 class="small text-muted" title="updated">Updated On: {{updated_at}}</h3>
-          <h3 class="small text-muted" title="added">Added On: {{created_at}}</h3>
+          <p class="small text-muted" title="updated">Updated On: {{updated_at}}</p>
+          <p class="small text-muted" title="added">Added On: {{created_at}}</p>
+          <p class="small text-muted" title="added_by">Added By: {{added_by.name}}</p>
         </td>
 
         <td class='list-button-cell'>
