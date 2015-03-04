@@ -22,7 +22,7 @@ router.get('/new', function (req, res) {
 })
 
 router.get('/show', function (req, res) {
-  var context = { currentUser : req.currentuser };
+  var context = { 'currentUser' : req.currentUser };
   if (req.query.q) {
     context.searchQuery = req.query.q;
   }
