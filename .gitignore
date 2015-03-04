@@ -4,11 +4,5 @@ node_modules
 bower_components
 *.swp
 index.html
-public/bootstrap/
-public/bootstrap/*
 public/javascripts/jquery.js
-public/font-awesome-4.2.0/
-public/font-awesome-4.2.0/*
 dev.sqlite3
-.sass-cache
-public/main.css.map
