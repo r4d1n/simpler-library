@@ -35,4 +35,20 @@ input {
   border-radius: 5px;
 }
 
+// make all of the buttons dark themed
+
+button.btn.btn-default {
+  color: @gray-lighter;
+  background-color: @gray;
+  border: 1px solid @gray-lighter;
+  &:hover, &:active, &:focus {
+    background: @gray-darker;
+  }
+}
+
+.open>.dropdown-toggle.btn-default {
+  background: @gray;
+  color: @gray-lighter;
+  border: 1px solid @gray;
+}
 /* End general stuff */
