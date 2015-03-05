@@ -47,14 +47,14 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title text-primary"></h4>
+        <h4 class="modal-title text-warning"></h4>
       </div>
       <!-- <form class="book-edit-form" method="POST" action="/books/{{book.id}}"> -->
       <div class="modal-body">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary edit-button">Save</button>
+        <button type="button" class="btn btn-warning edit-button">Save</button>
       </div>
       <!-- </form> -->
     </div><!-- /.modal-content -->
@@ -106,38 +106,38 @@
       <tr>
         <td class='main-book-cell'>
           <h6 class="att-title" title="title">{{title}}</h3>
-            <p class="small text-muted" title="photographer">Artist: {{photographer}}</p>
-            <p class="small text-muted" title="nationality">Nationality: {{nationality}}</p>
-            <p class="small text-muted" title="type">Type: {{type}}</p>
+            <p class="small" title="photographer">Artist: {{photographer}}</p>
+            <p class="small" title="nationality">Nationality: {{nationality}}</p>
+            <p class="small" title="type">Type: {{type}}</p>
           </td>
           <td class='main-book-cell'>
-            <p class="small text-muted" title="year">Year: {{year}}</p>
-            <p class="small text-muted" title="publisher">Publisher: {{publisher}}</p>
-            <p class="small text-muted" title="isbn">ISBN: {{isbn}}</p>
-            <p class="small text-muted" title="textby">Text By: {{textby}}</p>
+            <p class="small" title="year">Year: {{year}}</p>
+            <p class="small" title="publisher">Publisher: {{publisher}}</p>
+            <p class="small" title="isbn">ISBN: {{isbn}}</p>
+            <p class="small" title="textby">Text By: {{textby}}</p>
           </td>
           <td class='main-book-cell'>
-            <p class="small text-muted" title="tags">Tags: {{tags}}</p>
-            <p class="small text-muted" title="genre">Genre: {{genre}}</p>
-            <p class="small text-muted" title="comments">Comments: {{comments}}</p>
+            <p class="small" title="tags">Tags: {{tags}}</p>
+            <p class="small" title="genre">Genre: {{genre}}</p>
+            <p class="small" title="comments">Comments: {{comments}}</p>
           </td>
 
           <td class='more-info-cell'> <!-- Hidden on load, shows in modals -->
-            <p class="small text-muted" title="updated">Updated On: {{updated_at}}</p>
-            <p class="small text-muted" title="added">Added On: {{created_at}}</p>
-            <p class="small text-muted" title="added_by">Added By: {{added_by.name}}</p>
+            <p class="small" title="updated">Updated On: {{updated_at}}</p>
+            <p class="small" title="added">Added On: {{created_at}}</p>
+            <p class="small" title="added_by">Added By: {{added_by.name}}</p>
           </td>
 
           <td class='list-button-cell'>
-            <button type="button" class="btn btn-default" data-toggle="modal"
+            <button type="button" id="list-button" class="btn btn-default" data-toggle="modal"
             data-target="#fullListModal" data-id="{{id}}" data-title="{{title}}">
             <i class="fa fa-list"></i>
           </button>
-          <button type="button" class="btn btn-default" data-toggle="modal"
+          <button type="button" id="edit-button" class="btn btn-default" data-toggle="modal"
           data-target="#editModal" data-id="{{id}}" data-title="{{title}}">
           <i class="fa fa-pencil"></i>
         </button>
-        <button type="button" class="btn btn-default" data-toggle="modal"
+        <button type="button" id="trash-button" class="btn btn-default" data-toggle="modal"
         data-target="#deleteModal" data-id="{{id}}" data-title="{{title}}">
         <i class="fa fa-trash"></i>
       </button>

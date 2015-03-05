@@ -1,21 +1,22 @@
 .panel {
+  border: 2px solid @gray-light;
   p, h6 {
     margin: 5px 0px;
   }
-
   .panel-heading {
     position: relative;
+    border-bottom: 1px solid @gray;
 
     #search-form {
       .pull-left();
-      // display: absolute;
-      // top: 5%;
-      // height: 30%;
-      // margin: auto 0px;
       input {
+        border: 1px solid @gray;
         width: 200px;
         margin-right: 10px;
       }
+    }
+    form button:hover {
+      background-color: @brand-primary;
     }
     #sort-col {
       height: 34px;
@@ -44,27 +45,50 @@
 
     table {
       text-align: center;
-      /*border-collapse: collapse;*/
+      border-collapse: collapse;
+
+      tr {
+        // border: 1px solid @gray;
+        td, th {
+          max-width: .5em;
+          overflow: hidden;
+          border: 1px solid @gray-light;
+        }
+        td:first-child, th:first-child {
+          border-left: 0px;
+        }
+        td:last-child, th:last-child {
+          border-right: 0px;
+        }
+      }
     }
 
-    td {
-      max-width: .5em;
-      overflow: hidden;
-    }
 
     td.main-book-cell {
       text-align: left;
       width: 27%;
     }
 
-    /*tr {
-    height: auto;
-    }*/
+    tr {
+    }
 
     .list-button-cell {
       width: auto;
       vertical-align: middle!important;
     }
 
+    // list button hover colors
+    #trash-button:hover {
+      background-color: @brand-danger;
+    }
+    #list-button:hover {
+      background-color: @brand-info;
+    }
+    #edit-button:hover {
+      background-color: @brand-warning;
+    }
+
+
+
+
     } // panel
-    /* End list table */

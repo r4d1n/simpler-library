@@ -7,7 +7,7 @@
 
 
 // additional variables
-@highlight-color: @brand-primary; // set in bootstrap
+@highlight-color: @brand-info; // set in bootstrap
 
 /* Begin general stuff */
 
@@ -33,22 +33,18 @@ p.home-text{
 input {
   display: inline-block;
   border-radius: 5px;
+  border: 1px solid @gray;
 }
 
-// make all of the buttons dark themed
+// buttons all around
 
 button.btn.btn-default {
-  color: @gray-lighter;
-  background-color: @gray;
-  border: 1px solid @gray-lighter;
-  &:hover, &:active, &:focus {
-    background: @gray-darker;
-  }
+  color: @gray;
+  background-color: #fff;
+  border: 1px solid @gray;
 }
 
-.open>.dropdown-toggle.btn-default {
-  background: @gray;
-  color: @gray-lighter;
-  border: 1px solid @gray;
+button.btn.btn-default:hover {
+    color: #fff;
 }
 /* End general stuff */
