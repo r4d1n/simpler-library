@@ -50,31 +50,51 @@
         <h4 class="modal-title text-primary"></h4>
       </div>
       <!-- <form class="book-edit-form" method="POST" action="/books/{{book.id}}"> -->
-        <div class="modal-body">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary edit-button">Save</button>
-        </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary edit-button">Save</button>
+      </div>
       <!-- </form> -->
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- / edit modal -->
 
-<form action="/books/show" method="GET">
-  <input name="q" />
-  <button>Search</button>
-</form>
-
-<p>
-Sort by: <a href="/books/show?sort=title">Title</a><a href="/books/show?sort=photographer">Photographer</a>
-</p>
-
 <div class='container center-main'>
-    {{#if searchQuery}}
-    <p>Your search results for {{searchQuery}}:</p>
-    {{/if}}
   <div class='panel panel-default'>
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-6">
+          <!-- <div class='input-group'> -->
+          <form class="form-inline" id="search-form" role="search" action="/books/show" method="GET">
+            <div class="form-group">
+              <label class="sr-only" for="q">Search</label>
+              <input name="q" class="form-control" placeholder="What are you looking for?"/>
+            </div>
+            <button class="btn btn-default">Search</button>
+          </form>
+          <!-- </div> -->
+        </div>
+        <div class="col-md-6" id="sort-col">
+          <span class="sort-options">
+          <span>Sort by:</span>
+          <span><a href="/books/show?sort=title">Title</a></span>
+          <span><a href="/books/show?sort=photographer">Photographer</a></span>
+          <span><a href="/books/show?sort=type">Type</a></span>
+          <span><a href="/books/show?sort=genre">Genre</a></span>
+          <span><a href="/books/show?sort=year">Year</a></span>
+          <span><a href="/books/show?sort=publisher">Publisher</a></span>
+        </span>
+        </div>
+      </div> <!-- row -->
+    </div>
+    {{#if searchQuery}}
+    <div class='panel-body'>
+      <span>Search results for <span class="query">{{searchQuery}}</span>:</span>
+    </div> <!-- panel body -->
+    {{/if}}
+
     <table id="library" class="table table-striped">
       <tr>
         <th>Primary Data</th>
@@ -82,49 +102,48 @@ Sort by: <a href="/books/show?sort=title">Title</a><a href="/books/show?sort=pho
         <th>More Info</th>
         <th></th> <!-- Above the buttons -->
       </tr>
-
       {{#each books}}
       <tr>
         <td class='main-book-cell'>
-          <h3 class="att-title" title="title">{{title}}</h3>
-          <p class="small text-muted" title="photographer">Artist: {{photographer}}</p>
-          <p class="small text-muted" title="nationality">Nationality: {{nationality}}</p>
-          <p class="small text-muted" title="type">Type: {{type}}</p>
-          <p class="small text-muted" title="genre">Genre: {{genre}}</p>
-        </td>
-        <td class='main-book-cell'>
-          <p class="small text-muted" title="year">Year: {{year}}</p>
-          <p class="small text-muted" title="publisher">By: {{publisher}}</p>
-          <p class="small text-muted" title="isbn">ISBN: {{isbn}}</p>
-          <p class="small text-muted" title="textby">Text By: {{textby}}</p>
-        </td>
-        <td class='main-book-cell'>
-          <p class="small text-muted" title="tags">Tags: {{tags}}</p>
-          <p class="small text-muted" title="comments">Comments: {{comments}}</p>
-        </td>
+          <h6 class="att-title" title="title">{{title}}</h3>
+            <p class="small text-muted" title="photographer">Artist: {{photographer}}</p>
+            <p class="small text-muted" title="nationality">Nationality: {{nationality}}</p>
+            <p class="small text-muted" title="type">Type: {{type}}</p>
+            <p class="small text-muted" title="genre">Genre: {{genre}}</p>
+          </td>
+          <td class='main-book-cell'>
+            <p class="small text-muted" title="year">Year: {{year}}</p>
+            <p class="small text-muted" title="publisher">Publisher: {{publisher}}</p>
+            <p class="small text-muted" title="isbn">ISBN: {{isbn}}</p>
+            <p class="small text-muted" title="textby">Text By: {{textby}}</p>
+          </td>
+          <td class='main-book-cell'>
+            <p class="small text-muted" title="tags">Tags: {{tags}}</p>
+            <p class="small text-muted" title="comments">Comments: {{comments}}</p>
+          </td>
 
-        <td class='more-info-cell'> <!-- Hidden on load, shows in modals -->
-          <p class="small text-muted" title="updated">Updated On: {{updated_at}}</p>
-          <p class="small text-muted" title="added">Added On: {{created_at}}</p>
-          <p class="small text-muted" title="added_by">Added By: {{added_by.name}}</p>
-        </td>
+          <td class='more-info-cell'> <!-- Hidden on load, shows in modals -->
+            <p class="small text-muted" title="updated">Updated On: {{updated_at}}</p>
+            <p class="small text-muted" title="added">Added On: {{created_at}}</p>
+            <p class="small text-muted" title="added_by">Added By: {{added_by.name}}</p>
+          </td>
 
-        <td class='list-button-cell'>
+          <td class='list-button-cell'>
+            <button type="button" class="btn btn-default" data-toggle="modal"
+            data-target="#fullListModal" data-id="{{id}}" data-title="{{title}}">
+            <i class="fa fa-list"></i>
+          </button>
           <button type="button" class="btn btn-default" data-toggle="modal"
-          data-target="#fullListModal" data-id="{{id}}" data-title="{{title}}">
-          <i class="fa fa-list"></i>
+          data-target="#editModal" data-id="{{id}}" data-title="{{title}}">
+          <i class="fa fa-pencil"></i>
         </button>
         <button type="button" class="btn btn-default" data-toggle="modal"
-        data-target="#editModal" data-id="{{id}}" data-title="{{title}}">
-        <i class="fa fa-pencil"></i>
+        data-target="#deleteModal" data-id="{{id}}" data-title="{{title}}">
+        <i class="fa fa-trash"></i>
       </button>
-      <button type="button" class="btn btn-default" data-toggle="modal"
-      data-target="#deleteModal" data-id="{{id}}" data-title="{{title}}">
-      <i class="fa fa-trash"></i>
-    </button>
-  </td>
-</tr>
-{{/each}}
+    </td>
+  </tr>
+  {{/each}}
 
 </table>
 </div> <!-- panel -->
