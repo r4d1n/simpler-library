@@ -1,11 +1,12 @@
-/* Begin nav bar */
 nav {
+  padding: 0px 15px;
   &.navbar-default.navbar-fixed-top {
-    border-bottom: 2px solid @gray-light;
+    // border-bottom: 2px solid @gray-light;
   }
-  #top-nav li {
-    list-style-type: none;
-    padding: 10px;
+  .main-options {
+    li {
+      padding-left: 45px;
+    }
   }
 
   button.btn.btn-default#user-dropdown:hover {
@@ -17,11 +18,9 @@ nav {
 
 }
 
-
 #cog-menu {
   height: 50px;
   margin: 0px;
-  // padding-right: 15px;
   li {
     height: inherit;
   }
@@ -32,25 +31,3 @@ nav {
     }
   }
 }
-
-
-// dropdown menu darkness
-// .dropdown-menu {
-//   background-color: @gray;
-//   li a {
-//     color: @gray-lighter;
-//     &:hover {
-//       color: @gray-lighter;
-//       background-color: @gray;
-//       text-decoration: underline;
-//     }
-//   }
-// }
-// .open>.dropdown-toggle.btn-default {
-//   background: @gray;
-//   color: @gray-lighter;
-//   border: 1px solid @gray;
-// }
-
-
-/* End nav bar */
