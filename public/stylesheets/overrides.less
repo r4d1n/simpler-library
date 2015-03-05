@@ -14,27 +14,27 @@
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
-@brand-primary:         #226f45; // was: darken(#428bca, 6.5%); // #337ab7
+@brand-primary:         #5f9708; // was: darken(#428bca, 6.5%); // #337ab7
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
 
 //** Global textual link color.
-@link-color:            @brand-primary;
+@link-color:            lighten(@brand-primary, 5%);
 //** Link hover color set via `darken()` function.
-@link-hover-color:      lighten(@link-color, 15%);
+@link-hover-color:      darken(@link-color, 15%);
 //** Link hover decoration.
 @link-hover-decoration: underline;
 
 //## Navbar basics
 @navbar-default-color:             @gray-dark;
-@navbar-default-bg:                #f8f8f8;
-@navbar-default-border:            @gray-light;
+@navbar-default-bg:                #fff;
+@navbar-default-border:            #fff;
 
 // Navbar links
-@navbar-default-link-color:                @gray-dark;
-@navbar-default-link-hover-color:          @brand-primary;
+@navbar-default-link-color:                @link-color;
+@navbar-default-link-hover-color:          @link-hover-color;
 @navbar-default-link-hover-bg:             transparent;
 @navbar-default-link-active-color:         #555;
 @navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
@@ -43,5 +43,5 @@
 
 // Navbar brand label
 @navbar-default-brand-color:               @brand-primary;
-@navbar-default-brand-hover-color:         lighten(@navbar-default-brand-color, 10%);
+@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
 @navbar-default-brand-hover-bg:            transparent;

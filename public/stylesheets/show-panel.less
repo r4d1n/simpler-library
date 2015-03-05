@@ -1,12 +1,17 @@
+@border-color: @gray;
+@border-color-light: lighten(@border-color, 20%);
+
 .panel {
-  border: 2px solid @gray-light;
+  border: 2px solid @border-color;
   p, h6 {
     margin: 5px 0px;
   }
+  .att-title {
+    color: darken(@brand-info, 25%);
+  }
   .panel-heading {
     position: relative;
-    border-bottom: 1px solid @gray;
-
+    border-bottom: 1px solid @border-color;
     #search-form {
       .pull-left();
       input {
@@ -36,7 +41,7 @@
     } // panel heading
 
     .panel-body {
-      border-bottom: 1px solid @gray;
+      border-bottom: 1px solid @border-color;
       .query {
         color: @highlight-color;
         font-weight: bold;
@@ -53,7 +58,7 @@
         td, th {
           max-width: .5em;
           overflow: hidden;
-          border: 1px solid @gray-light;
+          border: 1px solid @border-color-light;
         }
         td:first-child, th:first-child {
           border-left: 0px;
@@ -79,14 +84,17 @@
     }
 
     // list button hover colors
-    #trash-button:hover {
-      background-color: @brand-danger;
-    }
     #list-button:hover {
       background-color: @brand-info;
     }
     #edit-button:hover {
       background-color: @brand-warning;
+    }
+    #edit-button {
+      margin: 0px 10px;
+    }
+    #trash-button:hover {
+      background-color: @brand-danger;
     }
 
 

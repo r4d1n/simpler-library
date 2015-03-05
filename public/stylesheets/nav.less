@@ -1,11 +1,21 @@
 nav {
   padding: 0px 15px;
-  &.navbar-default.navbar-fixed-top {
-    // border-bottom: 2px solid @gray-light;
+
+  .navbar-header {
+    .navbar-brand {
+      font-weight: 700;
+      background-color: #fff;
+    }
   }
+
   .main-options {
     li {
-      padding-left: 45px;
+      font-weight: 700;
+      margin-left: 45px;
+      border: 2px solid #fff;
+      &:hover {
+        border: 2px solid @navbar-default-link-hover-color;
+      }
     }
   }
 
