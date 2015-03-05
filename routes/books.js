@@ -46,8 +46,11 @@ router.get('/show', function (req, res) {
 })
 
 router.get('/', function(req, res) {
-  res.json({'books' : booksDB});
-})
+  booksIndex(req.query.q, req.query.sort)
+  .then(function(books) {
+    res.json({'books' : books})
+  });
+});
 
 
 router.post('/', function(req, res) {

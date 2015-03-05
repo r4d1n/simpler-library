@@ -4,5 +4,4 @@ node_modules
 bower_components
 *.swp
 index.html
-public/javascripts/jquery.js
 dev.sqlite3
