@@ -4,7 +4,7 @@
 .form-left {
   display: inline-block;
   width: 25%;
-  vertical-align: top;
+  vertical-align: middle;
   text-align: right;
   margin-right: 15px;
   font-weight: bold;
@@ -24,25 +24,18 @@
 
 /* Begin User Form */
 .user-form {
-  position: absolute;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%);
-  -webkit-transform: translate(-50%);
-  -moz-transform: translate(-50%);
-  -ms-transform: translate(-50%);
-  -o-transform: translate(-50%);
-}
 
-.user-form-btn {
-  /*margin-left: 30%;
-  margin-right: 20%;*/
-  float: right;
-  width: 15em;
-  padding-right: 5px;
-}
-
-.user-form .form-group input {
-  width: 15em;
+  .form-group {
+    width: 500px;
+    margin: 0 auto;
+    padding: 15px;
+    input {
+      width: 50%;
+    }
+    button {
+      width: 50%;
+      margin: 0 auto;
+        }
+  }
 }
 /* End User Form */
