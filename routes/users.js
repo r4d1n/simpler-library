@@ -1,4 +1,5 @@
 var express = require('express');
+// maybe change this to use main 'app'
 var router = express.Router();
 var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt');

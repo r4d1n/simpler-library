@@ -8,8 +8,9 @@ var lessMiddleware = require('less-middleware')
 
 var app = express();
 
-var knex = require('../config/database');
-var bookshelf = require('bookshelf')(knex);
+// var knex = require('./config/database');
+// var bookshelf = require('bookshelf')(knex);
+// app.set('bookshelf', bookshelf);
 
 // routes
 var routes = require('./routes/index');
@@ -67,7 +68,6 @@ var hbs = exphbs.create({
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.set('bookshelf', bookshelf);
 
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use(lessMiddleware(__dirname + '/public'));
@@ -82,3 +82,5 @@ var server = app.listen(port, function () {
   console.log('App listening at http://%s:%s', host, port)
 
 })
+
+module.exports = app;
