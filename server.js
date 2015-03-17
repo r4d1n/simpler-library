@@ -8,8 +8,8 @@ var lessMiddleware = require('less-middleware')
 
 var app = express();
 
-var knex = require('../config/database');
-var bookshelf = require('bookshelf')(knex);
+// var knex = require('../config/database');
+// var bookshelf = require('bookshelf')(knex);
 
 // routes
 var routes = require('./routes/index');
