@@ -8,6 +8,9 @@ var lessMiddleware = require('less-middleware')
 
 var app = express();
 
+var knex = require('../config/database');
+var bookshelf = require('bookshelf')(knex);
+
 // routes
 var routes = require('./routes/index');
 var books = require('./routes/books');
@@ -15,7 +18,15 @@ var users = require('./routes/users');
 
 // models
 var User = require('./models/user');
+var Book = require('./models/book');
 
+// hacks to run locally
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Methods", "DELETE");
+  next();
+})
 
 // user session middleware
 app.use(session({
@@ -41,10 +52,6 @@ app.use('/', routes);
 app.use('/books', books);
 app.use('/users', users);
 
-app.use(lessMiddleware(__dirname + '/public'));
-
-app.use(express.static(__dirname + '/public'));
-app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
 // to support URL-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -60,14 +67,10 @@ var hbs = exphbs.create({
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-// hacks to run locally
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header("Access-Control-Allow-Methods", "DELETE");
-  next();
-})
+app.set('bookshelf', bookshelf);
 
+app.use('/bower_components', express.static(__dirname + '/bower_components'));
+app.use(lessMiddleware(__dirname + '/public'));
 app.use(express.static(__dirname + '/public'));
 
 var port = process.env.PORT || 3000;
