@@ -2,20 +2,20 @@ var bookshelf = require('../config/bookshelf-db');
 
 var Book = bookshelf.Model.extend({
   tableName: 'books',
-  setMainAttributes: function(reqBook) {
-    this.title = reqBook.title;
-    this.photographer = reqBook.photographer;
-    this.nationality = reqBook.nationality;
-    this.type = reqBook.type;
-    this.genre= reqBook.genre;
-    this.textby = reqBook.textby;
-    this.publisher = reqBook.publisher;
-    this.isbn = reqBook.isbn;
-    this.year = reqBook.year;
-    this.tags = reqBook.tags;
-    this.comments = reqBook.comments;
-    this.signed = reqBook.signed;
-  },
+  // setMainAttributes: function(reqBook) {
+  //   this.title = reqBook.title;
+  //   this.photographer = reqBook.photographer;
+  //   this.nationality = reqBook.nationality;
+  //   this.type = reqBook.type;
+  //   this.genre= reqBook.genre;
+  //   this.textby = reqBook.textby;
+  //   this.publisher = reqBook.publisher;
+  //   this.isbn = reqBook.isbn;
+  //   this.year = reqBook.year;
+  //   this.tags = reqBook.tags;
+  //   this.comments = reqBook.comments;
+  //   this.signed = reqBook.signed;
+  // },
   hasTimeStamps: ['createdAt', 'updatedAt'],
   creator: function () {
     return this.belongsTo(User);
