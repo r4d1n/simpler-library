@@ -3,6 +3,8 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var knex = require('../config/database');
 
+var Book = require('../models/book.js');
+
 router.use(bodyParser.urlencoded({ extended: true }))
 
 router.get('/debug', function(req, res) {
@@ -16,6 +18,7 @@ router.get('/debug', function(req, res) {
 router.get('/new', function (req, res) {
   if(req.currentUser){
     res.render('books/new', { 'currentUser' : req.currentUser });
+    console.log("Book: " + Book);
   } else {
     res.redirect('../users/login');
   }
@@ -56,9 +59,9 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
   var newBook = req.body.book;
   if(!req.currentUser) {
-    res.redirect('../users/login')
+    res.redirect('../users/login');
   } else {
-    knex('books').insert({
+    Book.forge({
       title : newBook.title,
       photographer : newBook.photographer,
       nationality : newBook.nationality,
@@ -71,12 +74,11 @@ router.post('/', function(req, res) {
       tags : newBook.tags,
       comments : newBook.comments,
       signed : newBook.signed,
-      created_at: new Date(),
-      updated_at: new Date(),
       user_id: req.currentUser.id
-    })
-    .then(function() {
-      res.json({});
+    }).save().then(function() {
+      res.redirect('/');
+    }).catch(function(err) {
+      console.log("There was an Error: " + err)
     })
   }
 })
