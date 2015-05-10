@@ -3,5 +3,6 @@ npm-debug.log
 node_modules
 bower_components
 *.swp
+*.swo
 index.html
 dev.sqlite3
