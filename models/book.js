@@ -8,14 +8,7 @@ var Book = bookshelf.Model.extend({
   },
   editor: function () {
     return this.belongsTo(User) || " ";
-  },
-  convertDates: function(dateArr) {
-    dateArr.forEach(function (el, ind, arr) {
-      var date = new Date();
-      date.setTime(el);
-      return date;
-    });
-  },
+  }
 });
 
 module.exports = Book;
