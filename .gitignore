@@ -6,3 +6,4 @@ bower_components
 *.swo
 index.html
 dev.sqlite3
+*.min.*

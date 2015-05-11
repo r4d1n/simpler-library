@@ -4,7 +4,7 @@ var exphbs = require('express-handlebars');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt');
-var lessMiddleware = require('less-middleware')
+//var lessMiddleware = require('less-middleware')
 
 var app = express();
 
@@ -70,7 +70,7 @@ app.set('view engine', 'handlebars');
 
 
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
-app.use(lessMiddleware(__dirname + '/public'));
+//app.use(lessMiddleware(__dirname + '/public'));
 app.use(express.static(__dirname + '/public'));
 
 var port = process.env.PORT || 3000;

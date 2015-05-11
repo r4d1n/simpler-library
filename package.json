@@ -34,6 +34,13 @@
   },
   "devDependencies": {
     "chai": "^2.3.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-jshint": "^1.10.0",
+    "gulp-less": "^3.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0",
+    "less-plugin-autoprefix": "^1.4.1",
+    "less-plugin-clean-css": "^1.5.0",
     "mocha": "^2.2.4",
     "mocha-phantomjs": "^3.5.3",
     "phantomjs": "^1.9.16"
