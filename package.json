@@ -1,6 +1,6 @@
 {
   "name": "simplib",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "a library application for organizing photobooks",
   "main": "server.js",
   "scripts": {
