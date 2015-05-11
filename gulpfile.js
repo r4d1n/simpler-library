@@ -14,7 +14,7 @@ gulp.task('client-js', function() {
   return gulp.src('lib/client.js')
   //.pipe(jshint())
   //.pipe(jshint.reporter('default'))
-  //.pipe(gulp.dest('public/javascripts'))
+  .pipe(gulp.dest('public/javascripts'))
   .pipe(rename('client.min.js'))
   .pipe(uglify())
   .pipe(gulp.dest('public/javascripts'))
@@ -25,8 +25,9 @@ gulp.task('less-css', function() {
   .pipe(less({
     plugins: [autoprefix, cleancss]
   }))
+  .pipe(gulp.dest('./public/stylesheets'))
   .pipe(rename('main.min.css'))
-  .pipe(gulp.dest('./public/stylesheets'));
+  .pipe(gulp.dest('./public/stylesheets'))
 })
 
 gulp.task('default', ['client-js', 'less-css']);

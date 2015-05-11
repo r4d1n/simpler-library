@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-  <link href="/bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="/stylesheets/main.min.css" rel="stylesheet">
-  <title>SimpLib</title>
+<link href="/bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+<!-- <link href="/stylesheets/main.min.css" rel="stylesheet">-->
+<link href="/stylesheets/main.css" rel="stylesheet"> <!-- uncompressed for development -->
+<title>SimpLib</title>
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed"
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"
         data-toggle="collapse" data-target="#collapse-nav">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -31,19 +32,19 @@
         <li><p class="navbar-text">Logged In As: {{currentUser.name}}</p></li>
         {{/if}}
         <li>
-          <div class="btn-group">
-            <button type="button" id="user-dropdown" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              <span class="fa fa-cog fa-lg"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              {{#if currentUser}}
-              <li><a href="/users/new">Add User</a></li>
-              <li><a href="/users/logout">Log Out</a></li>
-              {{else}}
-              <li><a href="/users/login">Log In</a></li>
-              {{/if}}
-            </ul> <!-- dropdown menu -->
-          </div> <!-- btn-group -->
+        <div class="btn-group">
+          <button type="button" id="user-dropdown" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class="fa fa-cog fa-lg"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            {{#if currentUser}}
+            <li><a href="/users/new">Add User</a></li>
+            <li><a href="/users/logout">Log Out</a></li>
+            {{else}}
+            <li><a href="/users/login">Log In</a></li>
+            {{/if}}
+          </ul> <!-- dropdown menu -->
+        </div> <!-- btn-group -->
         </li>
       </ul> <!-- right -->
     </div> <!-- navbar collapse -->
@@ -61,6 +62,7 @@
 </div>
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/javascripts/client.min.js"></script>
+<!--<script src="/javascripts/client.min.js"></script>-->
+<script src="/javascripts/client.min.js"></script>  <!-- uncompressed for development -->
 </body>
 </html>
