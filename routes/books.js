@@ -6,15 +6,15 @@ var knex = require('../config/database');
 var bookHandler = require('../lib/bookHandler.js');
 var Book = require('../models/book.js');
 
-router.use(bodyParser.urlencoded({ extended: true }))
+router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/debug', function(req, res) {
   knex.select().table('books')
   .then(function(resp) {
     console.log(resp);
     res.json({});
-  })
-})
+  });
+});
 
 router.get('/new', function (req, res) {
   if(req.currentUser){
@@ -23,7 +23,7 @@ router.get('/new', function (req, res) {
   } else {
     res.redirect('../users/login');
   }
-})
+});
 
 router.get('/show', function (req, res) {
   // if(!req.currentUser) { //commented out for dev purposes
@@ -37,21 +37,21 @@ router.get('/show', function (req, res) {
   .then(function(collection) {
     for (var i = 0; i < collection.length; i++) {
       context.books[i] = collection.models[i].attributes;
-      context.books[i].created_at = bookHandler.convertDate(collection.models[i].attributes.created_at);
-      context.books[i].updated_at = bookHandler.convertDate(collection.models[i].attributes.created_at);
-    }
+      context.books[i].created_at = bookHandler.convertDate(context.books[i].created_at);
+      context.books[i].updated_at = bookHandler.convertDate(context.books[i].updated_at);
+    } 
     res.render('books/show', context);
   }).catch(function(err){
     console.error("There was an error", err);
     res.redirect('/');
-  })
+  });
   // } // else
-})
+});
 
 router.get('/', function(req, res) {
   bookHandler.index(req.query.q, req.query.sort)
   .then(function(books) {
-    res.json({'books' : books})
+    res.json({'books' : books});
   });
 });
 
@@ -77,10 +77,10 @@ router.post('/', function(req, res) {
     }).save().then(function() {
       res.redirect('/');
     }).catch(function(err) {
-      console.log("There was an Error: " + err)
-    })
+      console.log("There was an Error: " + err);
+    });
   }
-})
+});
 
 router.get('/:id/edit', function (req, res) {
   // fetch book via id and pass to render
@@ -91,7 +91,7 @@ router.get('/:id/edit', function (req, res) {
       layout: false
     });
   });
-})
+});
 
 router.post('/:id', function(req, res) {
   var bookData = req.body.book;
@@ -112,8 +112,8 @@ router.post('/:id', function(req, res) {
   })
   .then(function(books) {
     res.render('books/show', {'books' : books});
-  })
-})
+  });
+});
 
 router.post('/:id/delete', function(req, res) {
   knex('books')
@@ -127,7 +127,7 @@ router.post('/:id/delete', function(req, res) {
       'books': books,
       // layout: false
     });
-  })
-})
+  });
+});
 
 module.exports = router;
