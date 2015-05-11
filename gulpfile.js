@@ -10,6 +10,9 @@ var LessPluginAutoPrefix = require('less-plugin-autoprefix');
 var cleancss = new LessPluginCleanCSS({ advanced: true });
 var autoprefix= new LessPluginAutoPrefix({ browsers: ["last 2 versions"] });
 
+var mocha = require('gulp-mocha');
+var mochaPhantomJS = require('gulp-mocha-phantomjs');
+
 gulp.task('client-js', function() {
   return gulp.src('lib/client.js')
   //.pipe(jshint())
@@ -30,5 +33,16 @@ gulp.task('less-css', function() {
   .pipe(gulp.dest('./public/stylesheets'))
 })
 
-gulp.task('default', ['client-js', 'less-css']);
+gulp.task('test-server', function() {
+  return gulp.src('test/server/*.js')
+  .pipe(mocha({ui: 'tdd'}));
+})
+
+gulp.task('test-client', function() {
+  return gulp.src('test/client/test.html')
+  .pipe(mochaPhantomJS());
+})
+
+
+gulp.task('default', ['client-js', 'less-css', 'test-server', 'test-client']);
 
