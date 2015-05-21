@@ -34,7 +34,7 @@ router.get('/show', function (req, res) {
     context.searchQuery = req.query.q;
   }
   bookHandler.index(req.query.q, req.query.sort)
-  .then(function(collection) {
+  .then(function(collection) { // Bookshelf collection promise
     for (var i = 0; i < collection.length; i++) {
       context.books[i] = collection.models[i].attributes;
       context.books[i].created_at = bookHandler.convertDate(context.books[i].created_at);
@@ -42,8 +42,8 @@ router.get('/show', function (req, res) {
     } 
     res.render('books/show', context);
   }).catch(function(err){
-    console.error("There was an error", err);
-    res.redirect('/');
+    console.error("There was an error", new Error(err));
+    res.redirect('/books/show');
   });
   // } // else
 });

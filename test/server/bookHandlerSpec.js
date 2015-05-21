@@ -16,10 +16,6 @@ suite('bookHandler module', function() {
     assert(String(bookHandler.convertDate(sampleInt)) === String(sampleDate));
   });
 
-  test('it should sort by id if no sort column is specified', function() {
-    assert.fail();
-  });
-
   //test('', function() {
 
   //});
